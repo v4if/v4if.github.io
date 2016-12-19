@@ -12,6 +12,9 @@ html, body {
     background: #0f0f0f;
     /*border-bottom: 1px solid #1783DB !important;*/
 }
+header.css({
+
+});
 
 .main-color {
     background-color: #1D88E6 !important; 
@@ -43,7 +46,7 @@ html.no-touch .page-header .fa:hover {
 
 .page-header .pui-menu-simple.open {
     width: 100%;
-    background: #1D88E6;
+    background: #0f0f0f;
     top: 4.7rem;
     right: 0;
     display: block;
