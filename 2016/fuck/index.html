@@ -119,7 +119,7 @@ tag_name=`date &quot;+V%Y%m%d.T%H%M%S&quot;`
 git tag -a ${tag_name} -m &quot;hotpatch&quot;
 
 git push origin master
-git push -u origin --tags
+git push origin --tags
 </code></pre>
 <p><img src="https://oelwdg5d6.qnssl.com/2016-12-18-223853.png" alt="fuck"></p>
 <p>在出现数据灾难或者版本回滚时，根据具体的时间戳tag拉取对应版本，恢复数据</p>
