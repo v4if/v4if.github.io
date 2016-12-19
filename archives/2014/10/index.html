@@ -86,74 +86,30 @@
 	    <div class="pui-layout main">
 	    	
 			<body>
-
-
 <div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
-    
-        <article>
-            <header>
-                <h1 class="pui-article-title">Fuck</h1>
-                <div class="pui-article-subtitle">
-                    发表于2016-12-18
-                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
-                        <span class="pui-text-xs" size="default">默认</span>
-                        <span class="pui-text-sm" size="14px">小</span>
-                        <span class="pui-text-md" size="18px">中</span>
-                        <span class="pui-text-lg" size="24px">大</span>
-                    </div>
-                </div>
-            </header>
-            <hr class="pui-hr-dashed">
-            <div class="pui-article-content">
-                <p>经历一次本地文件丢失事故，决定用gitcaffe做全目录git备份！<br>新的起点，Powerd by Plane UI 前端UI设计框架</p>
-<p>遇到痛点，自然就是想到解决办法，利用git天然的版本控制系统做文件备份，由于墙内github时不时抽风，采用gitcafe作为备份git服务器，现在已经被coding收购了</p>
-<p>在<code>重要</code>目录，需要及时热备份的地方创建<code>hotpatch</code>脚本处理文件，每次版本更新或者文件变动的时候，push最新文件改动，并对每次push的内容打一个时间戳的tag，方便数据灾难或者版本回滚的时候根据tag拉取历史版本</p>
-<blockquote>
-<p>hotpatch，创建git repository的过程省略了，本文repo的ssh地址为：git@git.coding.net:v4if/hotpatch.git，因此本地需要<code>git remote add origin git@git.coding.net:v4if/hotpatch.git</code>添加远程仓库地址</p>
-</blockquote>
-<pre><code class="bash">#!/bin/bash
-git add .
-git commit -m &quot;hotpatch&quot;
 
-tag_name=`date &quot;+V%Y%m%d.T%H%M%S&quot;`
-git tag -a ${tag_name} -m &quot;hotpatch&quot;
+	<div class="pui-timeline">
+	    <div class="pui-timeline-list">
+			
+			
+				
+				
+					<div class="pui-timeline-divider pui-timeline-divider-line">2014年</div>
+					
+				
 
-git push origin master
-git push origin --tags
-</code></pre>
-<p><img src="https://oelwdg5d6.qnssl.com/2016-12-18-223853.png-rb" alt="fuck"></p>
-<p>在出现数据灾难或者版本回滚时，根据具体的时间戳tag拉取对应版本，恢复数据</p>
-<blockquote>
-<p>$ <code>git clone git@git.coding.net:v4if/hotpatch.git</code><br>$ <code>git tag</code> #查看tag<br>$ <code>git checkout tags/&lt;tag_name&gt; -b &lt;branch_name&gt;</code></p>
-</blockquote>
-<p>血的教训，及时做好重要数据文件的备份！</p>
+				<div class="pui-timeline-item pui-timeline-badge-date">
+				    <label class="pui-badge pui-badge-info">2014-10-19</label>
+				    <div class="pui-timeline-item-context">
+				        <a class="pui-link" href="/2014/印记/"> 印记 </a>
+				    </div>
+				</div>
+			
 
-            </div>
-        </article>
-    
+	    </div>
+	</div>
 
-	
-		<!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="post-2016/fuck" data-title="Fuck" data-url="https://v4if.github.io/2016/fuck/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"zone-atkjest"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
-
-	
 </div>
-
 </body>
 			
 	    </div>
