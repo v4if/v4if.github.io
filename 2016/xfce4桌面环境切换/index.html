@@ -1,0 +1,210 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">xfce4桌面环境切换</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-03-02
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>kali linux刚升级完kali rolling 2016.1之后发现默认的gnome桌面环境经常会莫名奇妙的卡死，于是选用了一款轻量级的桌面环境<code>xfce4</code>，切换之后比gnome环境流畅轻快太多了<br><a id="more"></a></p>
+<h3 id="安装xfce4"><a href="#安装xfce4" class="headerlink" title="安装xfce4"></a>安装xfce4</h3><p><code>apt-get install kali-defaults kali-root-login desktop-base xfce4 xfce4-places-plugin xfce4-goodies</code><br>以下为卸载xfce4命令：<br><code>apt-get remove xfce4 xfce4-places-plugin xfce4-goodies</code></p>
+<h3 id="切换桌面环境"><a href="#切换桌面环境" class="headerlink" title="切换桌面环境"></a>切换桌面环境</h3><p>在终端执行命令：<br><code>update-alternatives --config x-session-manager</code><br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-02-202800_1366x768_scrot.png-rb" alt="x-session" class="pui-img-article"><br>然后注销重新登陆</p>
+<p>xfce4桌面环境截图:<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-02-203620_1366x768_scrot.png-rb" alt="xfce4" class="pui-img-article"></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/xfce4桌面环境切换" data-title="xfce4桌面环境切换" data-url="https://v4if.github.io/2016/xfce4桌面环境切换/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

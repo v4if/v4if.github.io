@@ -1,0 +1,219 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">博客启用全站HTTPS</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-10-06
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p><img src="http://7xot8c.com1.z0.glb.clouddn.com/github-pages-with-https-rewrite.png-rb" alt="https_is_coming" class="pui-img-article"><br>可以看到网站左上方https绿色的小锁，启用全站HTTPS</p>
+<p>为支持全站HTTPS做的一些改动：</p>
+<blockquote>
+<p>cloudflare 全站https解析<br>多说新浪头像sinaimg采用默认微博logo<br>去掉百度云分享链接，所谓有得必有失<br>七牛云存储https化，添加图片水印</p>
+</blockquote>
+<p>更新 2016-10-09 11:40:08<br>由于cloudflare的dns经常被墙，放弃cloudflare全站https解析，改用GitHub二级域名，并相应做了一些加载优化 <a href="https://v4if.github.io">https://v4if.github.io</a></p>
+<p>全站改版中。。。</p>
+<blockquote>
+<p>1、js、css压缩之后放在cdn上，并设置最大缓存时间，加载一次之后再次访问from cached接近0ms。<br>2、放弃使用font awesome和font diao的web icon font，加载速度太慢，而且我只需要其中五六个icon &gt; font，却加载了所有的ttf，网络延迟在Network中看的时候每个文件都已经到了5-6秒的样子，整个网站完全加载之后要10多秒。<br>采用阿里巴巴矢量图标库，只加载自己需要的那几个web icon font。<br>3、特定页面的优化。<br>比如首页和文章页的css是分开的，所以首页是不需要加载文章页的post.css文件。<br>建站日志页面去掉了多说评论，因此对于多说的embed.js也是不需要加载的。<br>之前为了添加视频对博客引入了video-js，这个加载的时候也是相当的慢，也是需要好几秒的延迟时间，毕竟是个对于部分文章页面的小众需要，于是对于需要引入video-js的文章加一个type: &gt; video-js的属性，只对添加属性的页面加载video-js。<br>4、css、js加载顺序优化<br>至于css、js应该放在head标签里面还是body标签结束之前，我的原则是css用到时加载，对页面渲染影响不大的js和css放在body标签结束前加载，如果在head标签里放了比较多的css、js加载会拖慢整个页面的显示。</p>
+</blockquote>
+<p>我在自己的电脑上用chrome加载，先清理掉浏览器缓存第一次加载，整个页面的加载基本都控制在了ms级别，站点图标favicon.ico和新浪的默认加载图标sinaimg.ico还是放在了github上，因此加载会比较慢，整个页面需要2.86s才能渲染完成，相对之前10多秒的样子已经提升了4-5倍左右。</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-10-10-101008.png-rb" alt="https_is_coming" class="pui-img-article"><br>然后在已经有缓存的情况下加载日志页面情况，可以看到速度已经非常快了，整个页面879ms就已经渲染完成了。</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-10-10-101050.png-rb" alt="https_is_coming" class="pui-img-article"></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/https_is_coming" data-title="博客启用全站HTTPS" data-url="https://v4if.github.io/2016/https_is_coming/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

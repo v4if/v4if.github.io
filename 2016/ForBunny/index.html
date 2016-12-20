@@ -1,0 +1,734 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">程序员能给女朋友做什么特别浪漫的礼物？</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-09-01
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>Web版我和她的足迹地图<br>上线地址： <a href="https://v4if.github.io/mapbox">v4if.github.io/mapbox</a><br>GitHub代码仓库地址： <a href="https://github.com/v4if/mapbox" target="_blank" rel="external">github.com/v4if/mapbox</a><br>应用部署效果图：<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-08-172406.png-rb" alt="forbunny" class="pui-img-article"></p>
+<h2 id="绪"><a href="#绪" class="headerlink" title="绪"></a>绪</h2><p>灵感来自于知乎的一个回答 <a href="https://www.zhihu.com/question/37804443/answer/119500268" target="_blank" rel="external">@Tony Xu</a><br><img src="http://7xot8c.com1.z0.glb.clouddn.com/forbunny.png-rb" alt="ForBunny" class="pui-img-article"></p>
+<p>然后开始着手准备，不定时更新中 . . .</p>
+<blockquote>
+<ul>
+<li>1、基于Web Map的API，在去过的城市上面标注足迹，城市之间连线；左侧可以留一部分显示在一起的时间统计</li>
+<li>2、将城市和城市之间的连线做一个listConfig，即相当于数据配置文件，便于更新维护，自己手撸一个简单的parser，去解析城市listNode和城市之间的连线listLine</li>
+</ul>
+</blockquote>
+<h2 id="Web-Map"><a href="#Web-Map" class="headerlink" title="Web Map"></a>Web Map</h2><p>一开始想使用Google Map，但是注册不到Google Maps JavaScript API的Key，凭据页面一直在刷新却永远出不来，可能是由于中国的大防火墙，然后转向了MapBox<br><a href="https://www.mapbox.com/mapbox.js/api/v2.4.0/" target="_blank" rel="external">mapbox.js</a> MapBox的JS库<br>学习mapbox还是比较简单的，参考下面的几个tutorial做下来，基本概念都差不多了<br><a href="https://www.mapbox.com/help/using-mapbox-editor/" target="_blank" rel="external">Using Mapbox Editor</a><br><a href="https://www.mapbox.com/help/#build-a-web-app" target="_blank" rel="external">Build a web app</a><br><a href="https://www.mapbox.com/help/building-a-store-locator/" target="_blank" rel="external">Build a store locator using Mapbox GL JS</a><br>主要明确两个概念：tiles和layers就可以了，即map的基本组成元素tiles，由最初的z0开始，^4四次方指数化增长，让你明白最终呈现给用户的map是由一个一个小的tiles拼接而成的，有时候网速不好的时候，会发现map的方格会有错位的现象。layers是map上面的图层，用于显示位置等信息。<br>地图加载出来之后最主要的工作就是需要添加图层数据，数据的获得推荐使用MapBox的在线图形化工具 <a href="https://www.mapbox.com/editor/" target="_blank" rel="external">MapBox Editor</a><br>可以将编辑好的图层Features数据以GeoJSON的格式导出，包括你创建的marker、marker的经纬度，还是非常方便的，我是在chrome下导出的，导出的数据比较龊<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-08-101959.png-rb" alt="forbunny" class="pui-img-article"><br>然后用chrome的插件JSONView格式化之后，又手动在Sublime Text里面修改的<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-08-102051.png-rb" alt="forbunny" class="pui-img-article"><br>可以将导出的数据<code>L.mapbox.featureLayer(geojson).addTo(map);</code>添加到map上，现在我们的map应该已经是这样的了<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-08-102823.png-rb" alt="forbunny" class="pui-img-article"><br>会发现多了好多白色的marker，接下来就是要将我们前面导出的GeoJSON数据解析出来添加maker的城市，对这个城市的描述，marker的类型和marker的地理坐标，然后在map的左侧做一个城市的列表导航，当点击某个城市的时候会将map的中心设置为该城市，并弹出对该城市添加的描述信息。</p>
+<h2 id="Data-Parser"><a href="#Data-Parser" class="headerlink" title="Data Parser"></a>Data Parser</h2><p>这部分是对上一步导出的GeoJSON数据进行解析，如果说整个Web应用的核心是MapBox，则这一部分是整个Web应用工作量最大的一部分，需要将导出的geojson.js按照字符读取解析我们需要的marker数据</p>
+<h3 id="XHR"><a href="#XHR" class="headerlink" title="XHR"></a>XHR</h3><p>解析的第一步是我们必须先读取到<code>geojson.js</code>数据文件，但是JavaScript出于安全考虑，在某种程度上限制了对本地文件的读取，读不到数据文件的话，谈何解析。<br>然后发现了一种出奇制胜的方法，利用Ajax技术的XMLHttpRequest去异步请求<code>geojson.js</code>文件，只能说世界真奇妙，将本来用于实现异步通讯，提高用户体验度的Ajax技术去异步请求获取本地数据文件的内容，其实想一想这两者的本质相同，都是从服务器拉取文件。</p>
+<pre><code class="JavaScript">function getInstanceOfXHR() {
+    var xhr;
+    try {xhr = new XMLHttpRequest();}
+    catch(e) {
+        var IEXHRVers =[&quot;Msxml3.XMLHTTP&quot;,&quot;Msxml2.XMLHTTP&quot;,&quot;Microsoft.XMLHTTP&quot;];
+        for (var i=0,len=IEXHRVers.length;i&lt; len;i++) {
+            try {xhr = new ActiveXObject(IEXHRVers[i]);}
+            catch(e) {continue;}
+        }
+    }
+    return xhr;
+}
+function xhrRequest() {
+    var xhr = getInstanceOfXHR();
+    xhr.onload = function () {            
+      parserGeoJSON(xhr.responseText);
+    };
+    try {
+      xhr.open(&quot;get&quot;, &quot;http://od4lcpo9k.bkt.clouddn.com/mapbox_geojson.js&quot;, true);
+      xhr.send();
+    }
+    catch (ex) {
+      console.log(ex.message);
+    }
+}
+</code></pre>
+<h3 id="Parser"><a href="#Parser" class="headerlink" title="Parser"></a>Parser</h3><p>这一步虽是重中之重，但就是一般解析器的流程，首先获取token，然后根据数据的格式进行parser，直接看代码就好了。<br>这里用到了一个向前的预判，判断什么时候结束Features的解析流程，function lookForwardFor(left, right)，向前查找，判断结束条件 left先于right找到为期望结果，返回0，即如果是left传入的token.type先于right传入的token.type找到的话则继续解析，否则解析结束。代码中所有的判断函数都是以期望获得的条件返回0，否则返回-1</p>
+<pre><code class="JavaScript">// For Parser
+var parserNodes = [];
+var geoText = &quot;&quot;;
+var index = -1;
+var currentChar = &quot;&quot;;
+var token = &quot;&quot;;
+var tokenType = {
+    Integer: &#39;Integer&#39;,
+    Word: &#39;Word&#39;,
+    LParen: &#39;LParen&#39;,                //大括号 {}
+    RParen: &#39;RParen&#39;,
+    Q_LParen: &#39;Q_LParen&#39;,
+    Q_RParen: &#39;Q_RParen&#39;,        //方括号    []
+    Equal: &#39;Equal&#39;,                    //=
+    Quotes: &#39;Quotes&#39;,       //&quot;&quot;
+    Colon: &#39;Colon&#39;,         //:
+    Comma: &#39;Comma&#39;,         //,
+    CLRF: &#39;CLRF&#39;,                     //换行
+    TAB: &#39;TAB&#39;,                          //TAB
+    Strip: &#39;Strip&#39;,                    //-
+    ZHcn: &#39;ZHcn&#39;,                        //汉字
+    EOF: &#39;EOF&#39;,                            //文件结束    
+    NONE: &#39;NONE&#39;                        //类型不识别
+};
+// 解析
+function parserGeoJSON(json) {
+    geoText = json;
+    if (isEmpty(geoText) != 0) {
+        return;
+    }
+    // console.log(geoText);
+
+    advance();
+    token = nextToken();
+    while(token.type != tokenType.EOF) {
+        if (token.value == &#39;FeatureCollection&#39;) {
+            parserFeature();
+            break;
+        }
+        token = nextToken();
+    }
+
+    dump(parserNodes);
+
+    buildLocationList(parserNodes);
+}
+// 按照格式解析类型
+function eat(what, type, value) {
+    if (what == 0) {
+        // by Type
+        while(token.type != tokenType.EOF) {
+
+            if (token.type == type) {
+                return 0;
+            }
+            token = nextToken();
+        }
+    } else if (what == 1) {
+        // by Value
+        while(token.type != tokenType.EOF) {
+
+            if (token.value == value) {
+                return 0;
+            }
+            token = nextToken();
+        }
+    }
+
+    error();
+}
+// 读取解析的数据值
+function getParserValue() {
+    var result = [];
+
+    eat(0, tokenType.Quotes);
+    eat(0, tokenType.Colon);
+    eat(0, tokenType.Quotes);
+
+    // get value
+    token = nextToken();
+    while(token.type != tokenType.EOF) {
+        if (token.type == tokenType.Quotes) {
+            break;
+        }
+        result.push(token.value);
+        token = nextToken();
+    }
+
+    return result.join(&quot;&quot;);
+}
+function getParserInteger() {
+    eat(0, tokenType.Integer);
+    return token.value;
+}
+// 获得解析数据的实例
+function getInstanceOfParserNode(title, details, desc, type, coordinate) {
+    this.title = title;
+    this.details = details;
+    this.desc = desc;
+    this.type = type;
+    this.coordinate = coordinate;
+}
+// dump parserNodes
+function dump(obj) {
+    var out = &#39;&#39;;
+    for (var i in obj) {
+        if (obj[i][&#39;type&#39;] == &#39;Point&#39;) {
+            out += i + &quot;: &quot; + &quot;[ title: &quot; + obj[i][&#39;title&#39;] + &quot; , details: &quot; + obj[i][&#39;details&#39;] + &quot; , desc: &quot; + obj[i][&#39;desc&#39;] + &quot; , type: &quot; + obj[i][&#39;type&#39;] + &quot; coordinate:[&quot; + obj[i][&#39;coordinate&#39;].lng + &quot;, &quot; + obj[i][&#39;coordinate&#39;].lat + &quot;] ]&quot; + &quot;\n&quot;;
+        } else if (obj[i][&#39;type&#39;] == &#39;LineString&#39;) {
+            out += i + &quot;: &quot; + &quot;[ title: &quot; + obj[i][&#39;title&#39;] + &quot; , desc: &quot; + obj[i][&#39;desc&#39;] + &quot; , type: &quot; + obj[i][&#39;type&#39;] + &quot; ]&quot; + &quot;\n&quot;;
+        }
+    }
+    console.log(out);
+
+    // var pre = document.createElement(&#39;pre&#39;);
+    // pre.innerHTML = out;
+    // document.body.appendChild(pre);
+}
+// lookForward 向前查找，判断结束条件 left先于right找到为期望结果
+function lookForwardFor(left, right) {
+    // 如果 ] 先于 { 找到，则意味着解析结束，返回值-1
+    token = nextToken();
+    while(token.type != tokenType.EOF &amp;&amp; token.type != left &amp;&amp; token.type != right) {
+        token = nextToken();
+    }
+
+    if (token.type == tokenType.EOF) {
+        return -1;
+    } else if (token.type == left) {
+        // 指针回退，继续解析
+        if (index &gt;= 0) {
+            index = index -1;
+        } else {
+            index = -1;
+        }
+        return 0;
+    } else if (token.type == right) {
+        return -1;
+    }
+}
+// 解析地图的Feature Layer数据
+function parserFeature() {
+    var i = 0;
+    token = nextToken();
+    while(token.type != tokenType.EOF) {
+        if (token.value == &#39;features&#39;) {
+            eat(0, tokenType.Q_LParen);
+            while(token.type != tokenType.EOF) {
+                eat(0, tokenType.LParen);
+
+                eat(1, null, &#39;type&#39;);
+                eat(1, null, &#39;Feature&#39;);
+
+                {
+                    // parser for properties
+                    eat(1, null, &#39;properties&#39;);
+                    eat(0, tokenType.LParen);
+                    eat(1, null, &#39;title&#39;);
+                    var title = getParserValue();
+                    eat(1, null, &#39;details&#39;);
+                    var details = getParserValue();
+                    eat(1, null, &#39;description&#39;);
+                    var desc = getParserValue();
+                    eat(0, tokenType.RParen);
+                }
+
+                {
+                    // parser for geometry
+                    eat(1, null, &#39;geometry&#39;);
+                    eat(0, tokenType.LParen);
+
+                    // parser for coordinates
+                    eat(0, tokenType.Q_LParen);
+                    var coordinate = {};
+                    if (lookForwardFor(tokenType.Integer, tokenType.Q_LParen) == 0) {
+                        var lng = getParserInteger();
+                        eat(0, tokenType.Comma);
+                        var lat = getParserInteger();
+                        coordinate = {
+                            &quot;lng&quot;: lng,
+                            &quot;lat&quot;: lat
+                        };
+                    }
+                    eat(0, tokenType.Q_RParen);
+
+                    eat(1, null, &#39;type&#39;);
+                    var nodeType = getParserValue();
+
+                    eat(0, tokenType.RParen);
+                }
+
+                eat(0, tokenType.RParen);
+
+                i = i + 1;
+                parserNodes.push(new getInstanceOfParserNode(title, details, desc, nodeType, coordinate));
+
+                if (lookForwardFor(tokenType.LParen, tokenType.Q_RParen) == -1) {
+                    break;
+                }
+            }
+
+            eat(0, tokenType.Q_RParen);
+            console.log(&quot;has parser &quot; + i + &quot; nodes&quot;);
+            break;
+        }
+        token = nextToken();
+    }
+}
+function error() {
+    console.log(&quot;Parser Error！&quot;);
+}
+// 判断是否为空
+function isEmpty(text) {
+    if (text == &quot; &quot;) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+// 判断是否文件结尾
+function isEOF(ch) {
+    if (ch == -1) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+// 判断是否为数字
+function isDigit(ch) {
+    if (ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+// 判断是否为字母
+function isAlpha(ch) {
+    if ((ch &gt;= &#39;A&#39; &amp;&amp; ch &lt;= &#39;Z&#39;) || (ch &gt;= &#39;a&#39; &amp;&amp; ch &lt;= &#39;z&#39;)) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+// 判断是否是汉字
+function isZHcn(ch) {
+    var unicode = ch.charCodeAt();
+    if (unicode &gt;= 0x4e00 &amp;&amp; unicode &lt;= 0x9fa5) {
+        return 0;
+    } else {
+        return -1;
+    }
+}
+// 读取下一个字符
+function advance() {
+    index = index + 1;
+    // 是否读到文件结束
+    if (index &gt; geoText.length) {
+        currentChar = -1; 
+    } else {
+        currentChar = geoText.charAt(index);
+    }
+}
+// 数字
+function getInteger() {
+    var result = [];
+    while(isEmpty(currentChar) == 0 &amp;&amp; (isDigit(currentChar) == 0 || currentChar == &#39;.&#39;)) {
+        result.push(currentChar);
+        advance();
+    } 
+    return result.join(&quot;&quot;);
+}
+// 单词
+function getWord() {
+    var result = [];
+    while(isEmpty(currentChar) == 0 &amp;&amp; isAlpha(currentChar) == 0) {
+        result.push(currentChar);
+        advance();
+    } 
+    return result.join(&#39;&#39;);
+}
+// 包装Token {type, value}
+function Token(type, value) {
+    return {
+        &quot;type&quot;: type,
+        &quot;value&quot;: value
+    }
+}
+// 提取单词的token
+function nextToken() {
+    while(isEOF(currentChar) != 0) {
+        // 后面数据读取需要带有原始空格
+        // if (isEmpty(currentChar) != 0) {
+        //     advance();
+        //     continue;
+        // }
+
+        // 数字
+        if (isDigit(currentChar) == 0) {
+            return Token(tokenType.Integer, getInteger());
+        } else if (isAlpha(currentChar) == 0) {
+            // 单词
+            return Token(tokenType.Word, getWord());
+        } else if (currentChar == &#39;{&#39;) {
+            advance();
+            return Token(tokenType.LParen, &#39;{&#39;);
+        } else if (currentChar == &#39;}&#39;) {
+            advance();
+            return Token(tokenType.RParen, &#39;}&#39;);
+        } else if (currentChar == &#39;[&#39;) {
+            advance();
+            return Token(tokenType.Q_LParen, &#39;[&#39;);
+        } else if (currentChar == &#39;]&#39;) {
+            advance();
+            return Token(tokenType.Q_RParen, &#39;]&#39;);
+        } else if (currentChar == &#39;=&#39;) {
+            advance();
+            return Token(tokenType.Equal, &#39;=&#39;);
+        } else if (currentChar == &#39;&quot;&#39;) {
+            advance();
+            return Token(tokenType.Quotes, &#39;&quot;&#39;);
+        } else if (currentChar == &#39;:&#39;) {
+            advance();
+            return Token(tokenType.Colon, &#39;:&#39;);
+        } else if (currentChar == &#39;,&#39;) {
+            advance();
+            return Token(tokenType.Comma, &#39;,&#39;);
+        } else if (currentChar == &#39;    &#39;) {
+            advance();
+            return Token(tokenType.TAB, &#39;TAB&#39;);
+        } else if (currentChar == &#39;-&#39;) {
+            advance();
+            return Token(tokenType.Strip, &#39;-&#39;);
+        }
+        else if (currentChar == &#39;\n&#39; || currentChar == &#39;\r\n&#39;) {
+            advance();
+            return Token(tokenType.CLRF, &#39;CLRF&#39;);
+        }
+        else {
+            var ch = currentChar;
+            advance();
+            return Token(tokenType.NONE, ch);
+        }
+    }
+
+    return Token(tokenType.EOF, &#39;EOF&#39;);
+}
+</code></pre>
+<h3 id="Rending"><a href="#Rending" class="headerlink" title="Rending"></a>Rending</h3><p>数据的加载与渲染，即把上一步解析出来的数据添加到map的左侧栏，左侧导航栏和map的分栏比采用了常见的2:8的比例，并绑定事件监听函数</p>
+<pre><code class="JavaScript">// ========== For map interactive ==========
+// This will let you use the .remove() function later on
+if (!(&#39;remove&#39; in Element.prototype)) {
+  Element.prototype.remove = function() {
+    if (this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
+// 将解析的Nodes输出
+function buildLocationList(data) {
+  // Iterate through the list of stores
+    for (i = 0; i &lt; data.length; i++) {
+      var currentFeature = data[i];
+
+      if (currentFeature.type == &#39;Point&#39;) {
+              // Select the listing container in the HTML and append a div
+            // with the class &#39;item&#39; for each store
+              var listings = document.getElementById(&#39;listings&#39;);
+              var listing = listings.appendChild(document.createElement(&#39;div&#39;));
+              listing.className = &#39;item&#39;;
+            listing.id = &quot;listing-&quot; + i;
+
+              // Create a new link with the class &#39;title&#39; for each store
+              // and fill it with the store address
+              var link = listing.appendChild(document.createElement(&#39;a&#39;));
+              link.href = &#39;#&#39;;
+              link.className = &#39;title&#39;;
+              link.dataPosition = i;
+              link.innerHTML = currentFeature.title;
+
+              addEventListeners(link, currentFeature);
+
+              // Create a new div with the class &#39;details&#39; for each store
+              // and fill it with the city and phone number
+              var details = listing.appendChild(document.createElement(&#39;div&#39;));
+              details.innerHTML = currentFeature.details;
+      }
+  }
+
+    buildPoemData();
+    buildTipData();
+}
+function buildPoemData() {
+    var i = parserNodes.length;
+    // 添加的诗的内容
+    var listings = document.getElementById(&#39;listings&#39;);
+    var listing = listings.appendChild(document.createElement(&#39;div&#39;));
+    listing.className = &#39;item&#39;;
+  listing.id = &quot;listing-&quot; + i;
+
+  var poemStr = &#39;#include &amp;lt;stdio.h&amp;gt;&lt;br&gt; \
+        void main()&lt;br&gt; \
+        {&lt;br&gt; \
+        &amp;nbsp;&amp;nbsp; double world;&lt;br&gt; \
+        &amp;nbsp;&amp;nbsp; unsigned letter;&lt;br&gt; \
+        &amp;nbsp;&amp;nbsp; short stay;&lt;br&gt; \
+        &amp;nbsp;&amp;nbsp; long memories;&lt;br&gt; \
+        &amp;nbsp;&amp;nbsp; printf(&quot;I miss you.\n&quot;);&lt;br&gt; \
+        }&lt;br&gt;&#39;;
+    var chStr = &#39;两个人的世界，一封没有署名的信，短暂的重逢后，留下的只是回忆，我想你，我爱的人&#39;;
+    // Create a new div with the class &#39;details&#39; for each store
+    // and fill it with the city and phone number
+    var details = listing.appendChild(document.createElement(&#39;div&#39;));
+    details.innerHTML = poemStr + chStr;
+}
+function buildTipData() {
+    var i = parserNodes.length + 1;
+    // 添加的tip
+    var listings = document.getElementById(&#39;listings&#39;);
+    var listing = listings.appendChild(document.createElement(&#39;div&#39;));
+    listing.className = &#39;item&#39;;
+  listing.id = &quot;listing-&quot; + i;
+
+
+    // Create a new div with the class &#39;details&#39; for each store
+    // and fill it with the city and phone number
+    var details = listing.appendChild(document.createElement(&#39;div&#39;));
+    details.innerHTML = &#39;Tips：&lt;br&gt;地图上的图标和连线可以点击的哦～&#39;;
+}
+// For event listeners
+function addEventListeners(element, currentFeature) {
+    // Add an event listener for the links in the sidebar listing
+    element.addEventListener(&#39;click&#39;, function(e){
+        // 1. Fly to the point associated with the clicked link
+        flyToCoordinate(currentFeature);
+        // // 2. Close all other popups and display popup for clicked store
+        createPopUp(currentFeature);
+        // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+        var activeItem = document.getElementsByClassName(&#39;active&#39;);
+        if (activeItem[0]) {
+           activeItem[0].classList.remove(&#39;active&#39;);
+        }
+        this.parentNode.classList.add(&#39;active&#39;);
+    });
+}
+// For map interactive
+function flyToCoordinate(currentFeature) {
+    map.panTo(currentFeature.coordinate, true);
+}
+// 创建弹出图层
+function createPopUp(currentFeature) {
+  var popUps = document.getElementsByClassName(&#39;mapboxgl-popup&#39;);
+  // Check if there is already a popup on the map and if so, remove it
+  if (popUps[0]) popUps[0].remove();
+
+  var popup = L.popup()
+        .setLatLng(currentFeature.coordinate)
+        .setContent(currentFeature.desc)
+        .openOn(map);
+}
+</code></pre>
+<h3 id="Love-Days"><a href="#Love-Days" class="headerlink" title="Love Days"></a>Love Days</h3><p>这一部分相当于一个计算在一起时间的小插件，在左侧导航栏的最上面显示，很简单的一段JS代码，这一部分做完之后就会和文章开头贴的应用的效果图片一致了</p>
+<pre><code class="JavaScript">function buildDateData() {
+    // 开始时间戳
+    var f_time = &quot;2014-10-19 23:59:59&quot;;
+    f_time = f_time.replace(/-/g,&quot;/&quot;);
+    var b_time = Date.parse(new Date(f_time));
+    // 当前时间戳
+    var e_time = Date.parse(new Date());
+    var delta_s = (e_time - b_time)/1000;
+    var days = Math.floor(delta_s/(24*60*60));
+    var left = delta_s%(24*60*60);
+    var hours = Math.floor(left/(60*60));
+    left = left%(60*60);
+    var minutes = Math.floor(left/60);
+    var seconds = Math.floor(left%60);
+
+    var time_stamp = days + &quot;天&quot; + hours + &quot;时&quot; +  minutes + &quot;分&quot; + seconds + &quot;秒&quot;;
+    updateDate(time_stamp);
+    // console.log(time_stamp);
+}
+
+function updateDate(time_stamp) {
+    var heading_time = document.getElementById(&quot;heading_time&quot;);
+    heading_time.innerHTML = time_stamp;
+}
+</code></pre>
+<h2 id="应用发布"><a href="#应用发布" class="headerlink" title="应用发布"></a>应用发布</h2><p>这里还是选择把应用部署在 <a href="https://github.com/v4if/mapbox" target="_blank" rel="external">GitHub</a> 上，因为我的博客也是放在了GitHub上，之前绑定了一个域名，因此只需要给新的repository建立一个gh-pages的分支，用于项目的展示页就可以访问了<code>git checkout -b gh-pages</code>，然后为了加快访问速度，把图片等资源放在了七牛云存储上。<br>应用上线地址 <a href="http://v4if.me/mapbox" target="_blank" rel="external">v4if.me/mapbox</a></p>
+<h2 id="～文末彩蛋～"><a href="#～文末彩蛋～" class="headerlink" title="～文末彩蛋～"></a>～文末彩蛋～</h2><h3 id="关于Data-Parser"><a href="#关于Data-Parser" class="headerlink" title="关于Data Parser"></a>关于Data Parser</h3><p>前面花了很大的篇幅去写Data Parser，但是在调试的时候发现其实不用Parser，直接使用就可以了，只是使用的时候数组嵌套的会比较深。当时已经解析了大概80%左右了，就<code>坚强的</code>解析下去了。<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-08-113148.png-rb" alt="forbunny" class="pui-img-article"></p>
+<h3 id="关于手机浏览器的调试"><a href="#关于手机浏览器的调试" class="headerlink" title="关于手机浏览器的调试"></a>关于手机浏览器的调试</h3><p>开发过程中出现了一个比较奇怪的问题，就是应用发布之后电脑上可以正常访问，手机端的浏览器访问左侧的城市列表导航栏显示不出来，在电脑上利用浏览器模拟手机客户端访问也是没有问题的。<br>然后同实验室的介绍说uc 开发者版可以进行调试，确实是个不错的工具<br><a href="http://plus.uc.cn/document/webapp/doc5.html" target="_blank" rel="external">uc 开发者版</a> 链接是UC的APK和doc的说明<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/ucbrow_4.png-rb" alt="forbunny" class="pui-img-article"></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/ForBunny" data-title="程序员能给女朋友做什么特别浪漫的礼物？" data-url="https://v4if.github.io/2016/ForBunny/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

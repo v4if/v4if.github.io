@@ -1,0 +1,213 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">kali rolling 常用操作与命令解析</h1>
+                <div class="pui-article-subtitle">
+                    发表于2015-12-07
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>linux下常用的操作与命令进行归类整理</p>
+<a id="more"></a>
+<h2 id="Linux下-tar-gz文件解压缩命令"><a href="#Linux下-tar-gz文件解压缩命令" class="headerlink" title="Linux下*.tar.gz文件解压缩命令"></a>Linux下*.tar.gz文件解压缩命令</h2><p>1.压缩命令：<br>命令格式：tar  -zcvf   压缩文件名.tar.gz   被压缩文件名<br>可先切换到当前目录下。压缩文件名和被压缩文件名都可加入路径。<br>2.解压缩命令：<br>命令格式：tar  -zxvf   压缩文件名.tar.gz<br>解压缩后的文件只能放在当前的目录。<br>.tar.gz     格式解压为          tar   -zxvf   xx.tar.gz<br>.tar.bz2    格式解压为          tar   -jxvf   xx.tar.bz2</p>
+<h2 id="ln-s软链接-符号链接"><a href="#ln-s软链接-符号链接" class="headerlink" title="ln-s软链接(符号链接)"></a>ln-s软链接(符号链接)</h2><p>它的功能是为某一个文件在另外一个位置建立一个同不的链接，这个命令最常用的参数是-s,文件会保持同步变化<br>具体用法是：ln -s 源文件 目标文件<br>在软链接的目标文件夹下用ls -il可以查看具有软链接的文件<br>需要删除软链接的话用rm -rf symbolic_name 注意不是rm -rf symbolic_name/</p>
+<h2 id="aptitude-install-xx"><a href="#aptitude-install-xx" class="headerlink" title="aptitude install xx"></a>aptitude install xx</h2><p>使用这个工具，当某个库依赖的库与当前版本不一致时，aptitude 会尝试降级当前这个库的版本，同时解决降级这个库对其它软件的依赖性的影响， 最终成功安装apt-get 没法安装的软件</p>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><p>echo $PATH<br>export PATH=/usr/bash:$PATH<br>该方法终端关闭后就会消失<br>可以更改/etc/profile来更改PATH，一开始更改始终不生效，但当看到下面这句话时就笑了<br>Now when you log out and log back in,PATH will assume the new value.</p>
+<h2 id="alias配置别名"><a href="#alias配置别名" class="headerlink" title="alias配置别名"></a>alias配置别名</h2><p>alias ll=’ls -a’ 重启终端之后别名就会消失<br>想要永久生效，可以配置家目录下的.bashrc</p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2015/kali rolling常用操作与命令解析" data-title="kali rolling 常用操作与命令解析" data-url="https://v4if.github.io/2015/kali rolling常用操作与命令解析/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

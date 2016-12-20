@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <meta name="description" content="Plane UI" />
 <meta name="keywords" content="Plane UI" />
-<title>v4if-</title>
+<title>v4if-归心</title>
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
@@ -43,7 +43,7 @@
                     <a href="/log">日志|Logs</a>
                 </li>
             </ul>
-            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius "> 
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
                 <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
                 <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
             </div>
@@ -55,10 +55,7 @@
 
 			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
 				
-				
-
-
-<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
     
         <article>
             <header>
@@ -75,7 +72,8 @@
             </header>
             <hr class="pui-hr-dashed">
             <div class="pui-article-content">
-                <p>经历一次本地文件丢失事故，决定用gitcaffe做全目录git备份！<br>新的起点，Powerd by Plane UI 前端UI设计框架</p>
+                <p>经历一次本地文件丢失事故，决定用gitcaffe做全目录git备份！<br>新的起点，Powerd by Plane UI 前端UI设计框架<br>github和gitcafe同时部署，双域名:<a href="https://v4if.github.io">v4if.github.io</a>、<a href="https://v4if.coding.me" target="_blank" rel="external">v4if.coding.me</a></p>
+<p>对原来的文章能找到的文件就直接粘过来了，没有找到的就选取了一部分挂在网站上的文章然后重新整理了一下</p>
 <hr class="pui-hr-dashed">
 
 <p>遇到痛点，自然就是想到解决办法，利用git天然的版本控制系统做文件备份，由于墙内github时不时抽风，采用gitcafe作为备份git服务器，现在已经被coding收购了</p>
@@ -93,7 +91,7 @@ git tag -a ${tag_name} -m &quot;hotpatch&quot;
 git push origin master
 git push origin --tags
 </code></pre>
-<p><img src="https://oelwdg5d6.qnssl.com/2016-12-18-223853.png-rb" alt="fuck" class="pui-img-article"></p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-12-18-223853.png-rb" alt="fuck" class="pui-img-article"></p>
 <p>在出现数据灾难或者版本回滚时，根据具体的时间戳tag拉取对应版本，恢复数据</p>
 <blockquote>
 <p>$ git clone git@git.coding.net:v4if/hotpatch.git<br>$ git tag #查看tag<br>$<code>git checkout tags/&lt;tag_name&gt; -b &lt;branch_name&gt;</code></p>
@@ -103,6 +101,10 @@ git push origin --tags
             </div>
         </article>
     
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 	
 		<!-- 多说评论框 start -->

@@ -1,0 +1,269 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">kali rolling 装机之后要做的N件事</h1>
+                <div class="pui-article-subtitle">
+                    发表于2015-11-28
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>kali linux继2.0之后又推出了正式滚动发布版本kali rolling 2016.1，终于可以平滑升级了，下面列出装机之后要做的N件事，避免以后做重复的工作</p>
+<a id="more"></a>
+<h2 id="文件目录设置"><a href="#文件目录设置" class="headerlink" title="文件目录设置"></a>文件目录设置</h2><p>自己在家目录下新建的文件目录一律用小写<br>|–root<br>　　|–project　　　　工作目录空间<br>　　|–software　　　　软件放置目录，为／usr/bin提供软链接<br>　　|–backup　　　　　资料备份<br>　　|–scripts　　　　bash脚本等，添加到$PATH</p>
+<h2 id="配置源"><a href="#配置源" class="headerlink" title="配置源"></a>配置源</h2><p>/etc/apt/sources.list</p>
+<pre><code class="bash">deb http://http.kali.org/kali kali-rolling main non-free contrib
+#deb http://mirrors.aliyun.com/kali  sana main non-free contrib
+#deb-src http://mirrors.aliyun.com/kali  sana main non-free contrib
+
+#deb http://mirrors.aliyun.com/kali-security  sana/updates main contrib non-free
+#deb-src http://mirrors.aliyun.com/kali-security  sana/updates main contrib non-free
+#================================================================================
+#deb http://security.kali.org/kali-security/ sana/updates main contrib non-free
+#deb-src http://security.kali.org/kali-security/ sana/updates main contrib non-free
+
+#deb http://http.kali.org/kali sana main non-free contrib
+#deb-src http://http.kali.org/kali sana main non-free contrib
+
+#deb http://security.kali.org/kali-security/ sana/updates main contrib non-free
+#deb-src http://security.kali.org/kali-security/ sana/updates main contrib non-free
+</code></pre>
+<h2 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h2><p>1.Do an apt-get update<br>apt-get update<br>2.Do an upgrade<br>apt-get upgrade<br>3.Finally do a distribution upgrade<br>apt-get dist-upgrade</p>
+<blockquote>
+<ul>
+<li>update<br>update 是同步 /etc/apt/sources.list 和 /etc/apt/sources.list.d 中列出的源的索引，这样才能获取到最新的软件包。</li>
+<li>upgrade<br>upgrade 是升级已安装的所有软件包，升级之后的版本就是本地索引里的，因此，在执行 upgrade 之前一定要执行 update, 这样才能是最新的。</li>
+</ul>
+</blockquote>
+<h2 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h2><p>apt-get install ibus ibus-googlepinyins #ibus安装完成之后需要配置才可以使用<br>(ibus设置–&gt;点击弹出对话框点击输入法标签–&gt;在第一个框里选择拼音–&gt;右侧按钮点击添加–&gt;关闭即可)<br>apt-get install fcitx fcitx-googlepinyin</p>
+<p>安装搜狗比较麻烦，需要解决一些烦人的依赖问题<br>可以参考这里<a href="http://jingyan.baidu.com/article/414eccf64a01b96b431f0af6.html" target="_blank" rel="external">Kali Linux安装搜狗拼音输入法</a></p>
+<h2 id="安装火狐浏览器"><a href="#安装火狐浏览器" class="headerlink" title="安装火狐浏览器"></a>安装火狐浏览器</h2><p>打开终端<br>第一步：apt-get remove iceweasel<br>第二步：<br>echo -e “\ndeb <a href="http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt" target="_blank" rel="external">http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt</a> all main” | tee -a /etc/apt/sources.list &gt; /dev/null<br>第三步：<br>apt-key adv –recv-keys –keyserver keyserver.ubuntu.com C1289A29<br>第四步：<br>apt-get update<br>第五步<br>apt-get install firefox-mozilla-build</p>
+<h2 id="安装flash"><a href="#安装flash" class="headerlink" title="安装flash"></a>安装flash</h2><p>1、打开终端输入“apt-get install flashplugin-nonfree”，并回车<br>2、安装完成以后，输入“update-flashplugin-nonfree –install”，并回车，进行软件更新</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>apt-get install build-essential</p>
+<h2 id="修改hosts访问google无障碍-etc-hosts"><a href="#修改hosts访问google无障碍-etc-hosts" class="headerlink" title="修改hosts访问google无障碍 /etc/hosts"></a>修改hosts访问google无障碍 /etc/hosts</h2><p>google host 的ip地址可以参考这里<a href="http://whatsoo.com/index/hosts" target="_blank" rel="external">Google hosts永久持续更新</a></p>
+<h2 id="字体优化"><a href="#字体优化" class="headerlink" title="字体优化"></a>字体优化</h2><h3 id="首先安装monaco-yahei字体"><a href="#首先安装monaco-yahei字体" class="headerlink" title="首先安装monaco yahei字体"></a>首先安装monaco yahei字体</h3><p>该字体是字体是Mac上的Monaco，非常棒，光滑细腻。最适合程序员的英文字体！<br>安装方法：<br>1.cp Monaco_Yahei.ttf /usr/share/fonts/truetype/monaco (fonts目录下自己找一个放TTF字体的文件夹)<br>2.cd /usr/share/fonts/truetype/monaco<br>mkfontscale<br>mkfontdir<br>fc-cache<br>3.搞定，自己设置选择字体。</p>
+<h3 id="接下来进行字体渲染"><a href="#接下来进行字体渲染" class="headerlink" title="接下来进行字体渲染"></a>接下来进行字体渲染</h3><p><a href="https://linux.cn/article-3019-1.html" target="_blank" rel="external">如何给任意一款 Linux 发行版添加漂亮的字体Infinality</a><br>kali是基于debian的衍生版，适用与debian下的软件源及安装方法<br>1.在终端中执行下面的命令（一个一个执行，每一行之后敲击回车）：<br>echo “deb <a href="http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu" target="_blank" rel="external">http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu</a> raring main” | sudo tee /etc/apt/&gt; sources.list.d/infinality.list<br>echo “deb-src <a href="http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu" target="_blank" rel="external">http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu</a> raring main” | sudo tee -a /etc/&gt; apt/sources.list.d/infinality.list<br>sudo apt-key adv –keyserver keyserver.ubuntu.com –recv-keys E985B27B<br>2.执行以下命令来升级你的系统并安装 Infinality 包：<br>sudo apt-get update<br>sudo apt-get upgrade<br>sudo apt-get install fontconfig-infinality<br>3.重启你的计算机，重启之后就会发现字体看着舒服了好多</p>
+<h2 id="安装hexo博客"><a href="#安装hexo博客" class="headerlink" title="安装hexo博客"></a>安装hexo博客</h2><p>1.安装git<br>sudo apt-get install git<br>2.安装nodejs<br>官网下载linux安装包.tar.gz文件<br>解压 tar zxvf 解压之后就可以到该文件下执行node npm了<br>如果要在任意目录可以访问的话，需要将node所在的目录，添加PATH环境变量里面，或者通过软连接的形式将node和npm链接到系统默认的PATH目录下的一个，软链接方式如下<br>ln -s /root/software/node-v4.2.3-linux-x64/bin/node /usr/bin/node<br>ln -s /root/software/node-v4.2.3-linux-x64/bin/npm /usr/bin/npm<br>3.通过npm安装hexo<br>npm install hexo-cli -g<br>这样就完成了hexo的安装<br>４.站点地图，提交给搜索引擎的<br>npm install hexo-generator-sitemap<br>npm install hexo-generator-baidu-sitemap<br>5.添加RSS订阅<br>npm install hexo-generator-feed</p>
+<h2 id="截屏工具Scrot"><a href="#截屏工具Scrot" class="headerlink" title="截屏工具Scrot"></a>截屏工具Scrot</h2><p>1.运行Scrot命令，不需要任何参数，然后它会保存一张整个桌面的截屏，以(日期标记).png的文件形式保存在当前文件目录下<br><code>scrot</code><br>2.Scrot允许你在桌面选择一个特定的窗口或定义一个矩形区域来截图。使用下列命令来实现：<br><code>scrot -s</code><br>3.你也可以指定保存目标文件夹和截图文件名。<br>scrot ~/Pictures/my_desktop.png</p>
+<h2 id="codeblocks安装"><a href="#codeblocks安装" class="headerlink" title="codeblocks安装"></a>codeblocks安装</h2><p>To install the packages using apt or one of its frontends please add the following lines to your /etc/apt/sources.list :</p>
+<pre><code class="bash">for stable:
+deb [arch=amd64,i386] https://apt.jenslody.de/stable jessie main
+deb-src https://apt.jenslody.de/stable jessie main
+</code></pre>
+<pre><code class="bash">for testing and unstable:
+deb [arch=amd64,i386] https://apt.jenslody.de/testing stretch main
+deb-src https://apt.jenslody.de/testing stretch main
+</code></pre>
+<p>The best and easiest way to add my public-key to apt’s trustdb is to install the package jens-lody-debian-keyring with your preferred package-manager or with:</p>
+<pre><code class="bash">sudo apt-get update
+sudo apt-get install jens-lody-debian-keyring
+</code></pre>
+<p>添加了keyring之后，apt-get install codeblocks</p>
+<h2 id="f-lux-自动调整屏幕色温减少眼睛疲劳"><a href="#f-lux-自动调整屏幕色温减少眼睛疲劳" class="headerlink" title="f.lux - 自动调整屏幕色温减少眼睛疲劳"></a>f.lux - 自动调整屏幕色温减少眼睛疲劳</h2><pre><code class="bash">add-apt-repository ppa:kilian/f.lux
+apt-get update
+apt-get install fluxgui
+</code></pre>
+<h2 id="Lamp环境搭建"><a href="#Lamp环境搭建" class="headerlink" title="Lamp环境搭建"></a>Lamp环境搭建</h2><p>kali linux 默认集成了lamp的环境，如果没有配置的话可以参照下面的命令</p>
+<pre><code class="bash">apt-get install apache2                        #install web server
+apt-get install mysql-server                #install mysql
+apt-get install php5 php-pear php5-mysql    #install php
+</code></pre>
+<p>启动服务:<code>service apache2 start</code><br>关闭服务:<code>service apache2 stop</code><br>重启服务:<code>service apache2 restart</code></p>
+<p>mysql服务:<code>service mysql start</code></p>
+<h2 id="绘图程序"><a href="#绘图程序" class="headerlink" title="绘图程序"></a>绘图程序</h2><p>kolourpaint4<br><code>apt-get install kolourpaint4</code></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2015/kali rolling装机之后要做的N件事" data-title="kali rolling 装机之后要做的N件事" data-url="https://v4if.github.io/2015/kali rolling装机之后要做的N件事/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

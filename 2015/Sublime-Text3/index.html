@@ -1,0 +1,311 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">Sublime Text 3 简记</h1>
+                <div class="pui-article-subtitle">
+                    发表于2015-10-03
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>以前都是使用Sublime Text 2，现在转用Sublime Text 3，记录一下使用和配置情况</p>
+<a id="more"></a>
+<h2 id="关于下载"><a href="#关于下载" class="headerlink" title="关于下载"></a>关于下载</h2><p>建议使用<a href="http://www.sublimetext.com/3" target="_blank" rel="external">Sublime Text 3</a>，启动速度比2快了很多，简直就是秒开，而且很多插件都在向3靠拢，下载的时候建议下载非安装版，解压之后就可以直接使用，而且安装的插件都在Packages目录下，方便管理和剪切移动。</p>
+<h2 id="插件管理"><a href="#插件管理" class="headerlink" title="插件管理"></a>插件管理</h2><p><em>安装方式一:直接安装</em></p>
+<blockquote>
+<p>进入到你的”Packages”文件夹(Preferences / Browse Packages)，然后：<br>git clone 你的插件地址</p>
+</blockquote>
+<p><em>安装方式二：使用Package Control</em></p>
+<blockquote>
+<p>按Ctrl+`调出console（有时候和其他软件的快捷键会有冲突，可以从View-&gt;Show Console调出安装面板）粘贴以下代码到底部命令行并回车：</p>
+</blockquote>
+<pre><code class="python">import urllib.request,os; pf = &#39;Package Control.sublime-package&#39;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), &#39;wb&#39;).write(urllib.request.urlopen( &#39;http://sublime.wbond.net/&#39; + pf.replace(&#39; &#39;,&#39;%20&#39;)).read())
+</code></pre>
+<h2 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h2><p>Sublime Text的强大与它的可定制化的插件是分不开的</p>
+<h3 id="ConvertToUTF8"><a href="#ConvertToUTF8" class="headerlink" title="ConvertToUTF8"></a>ConvertToUTF8</h3><p>自动转换各种非UTF8格式（中文兼容）</p>
+<h3 id="Codecs33"><a href="#Codecs33" class="headerlink" title="Codecs33"></a>Codecs33</h3><p>为了让ConvertToUTF8更好的工作,在<code>HOME/.config/sublime-text-3/Packages</code>目录下输入命令<br><code>git clone https://github.com/seanliang/Codecs33.git</code><br>用git clone下载的时候下载的插件东西不全，导致sublime识别不出来插件，于是又从github里面手动下载zip并解压到~/.config/sublime-text-3/Packages里面</p>
+<h3 id="BracketHighlighter"><a href="#BracketHighlighter" class="headerlink" title="BracketHighlighter"></a>BracketHighlighter</h3><p>This plugin provides bracket highlighting for all sorts of brackets.</p>
+<h3 id="SublimeREPL"><a href="#SublimeREPL" class="headerlink" title="SublimeREPL"></a>SublimeREPL</h3><p>对开发者来讲这个可能是最有用的插件之一了。SublimeREPL 可以直接在编辑器中运行一个解释器，支持很多语言：Clojure, CoffeeScript, F#, Groovy, Haskell, Lua, MozRepl, NodeJS, Python, R, Ruby, Scala, shell</p>
+<h3 id="MarkdownEditing"><a href="#MarkdownEditing" class="headerlink" title="MarkdownEditing"></a>MarkdownEditing</h3><p>支持markdown语法</p>
+<h3 id="FileHeader"><a href="#FileHeader" class="headerlink" title="FileHeader"></a>FileHeader</h3><p>将一个模板文件分为header和body两部分。允许用户自定义自己的模板文件<br><code>git clone git@github.com:shiyanhui/FileHeader.git</code></p>
+<h3 id="CTags"><a href="#CTags" class="headerlink" title="CTags"></a>CTags</h3><p>产生标记文件以帮助在源文件中定位对象,Navigate to Definition。</p>
+<h3 id="SublimeClang"><a href="#SublimeClang" class="headerlink" title="SublimeClang:"></a>SublimeClang:</h3><p>C语言强大插件必备！！<br>    Auto complete<br>    Syntax diagnostic<br>    Goto definition</p>
+<p>安装方法如下：<br>1.下载SublimeClang插件</p>
+<pre><code class="bash">clone --recursive https://github.com/quarnster/SublimeClang SublimeClang`
+#cd SublimeClang
+#git pull &amp;&amp; git submodule foreach --recursive git pull origin master
+</code></pre>
+<p><em>Windows Needs</em><br>2.下载插件包<br>从<a href="">这里</a>下载SublimeClang-1.0.41.sublime-package并把后缀改为<code>.zip</code><br>3.将上面下载的插件包解压，并把其中的<code>libclang.dll and libcache.dll</code>或者<code>libclang_x64.dll and libcache_x64.dll</code>复制到<code>SublimeClang\internals</code>目录下<br><em>Linux Needs</em><br>2.Clang编译环境<br><code>apt-get install clang</code><br>3.编译libcache.so</p>
+<pre><code class="bash">cd $HOME/.config/sublime-text-2/Packages/SublimeClang/src
+mkdir build &amp;&amp; cd build
+cmake ..
+make
+</code></pre>
+<p>注：如果编译的时候提示<code>bash: cmake: command not found</code>，需要提前安装cmake，<code>apt-get install cmake</code></p>
+<p>4.将你的工程保存一下<code>Project-&gt;Save Project as ...</code>，然后编辑你的工程文件<code>projece_name.sublime-project</code>，添加你的头文件包含路径</p>
+<pre><code class="bash">&quot;sublimeclang_options&quot;:
+[
+    &quot;-I/project/specific/path/1&quot;,
+    &quot;-I/project/specific/path/2&quot;
+]
+</code></pre>
+<p>5.重启sublime</p>
+<h3 id="Emmet"><a href="#Emmet" class="headerlink" title="Emmet"></a>Emmet</h3><p>前端开发利器</p>
+<h2 id="偏好设置"><a href="#偏好设置" class="headerlink" title="偏好设置"></a>偏好设置</h2><pre><code class="python">{
+    &quot;ignored_packages&quot;:[],
+    &quot;font_face&quot;: &quot;Consolas&quot;,
+    &quot;font_size&quot;: 14,
+    &quot;smart_indent&quot;: true,
+    &quot;word_wrap&quot;: &quot;true&quot;,
+    &quot;default_line_ending&quot;: &quot;unix&quot;,
+    &quot;tab_size&quot;: 4,
+    //保存时自动转换tab为空格
+    &quot;expand_tabs_on_save&quot;: true,
+    //代码提示延迟
+    &quot;auto_complete_delay&quot;: 0,
+    // 按回车时，自动与制表位对齐
+    &quot;auto_indent&quot;: true,
+    // 自动匹配引号，括号等
+    &quot;auto_match_enabled&quot;: true,
+    // 是否显示代码折叠按钮
+    &quot;fold_buttons&quot;: true,
+    // 突出显示当前光标所在的行
+    &quot;highlight_line&quot;: true,
+    //设置文件修改时, 标签高亮提示, 这样可以提示保存
+    &quot;highlight_modified_tabs&quot;: true, 
+    // 为true时，保存文件时光标会在文件的最后向下换一行
+    &quot;ensure_newline_at_eof_on_save&quot;: true,
+    //默认编码类型
+    &quot;default_encoding&quot;: &quot;UTF-8&quot;,
+    //行高
+    &quot;line_padding_top&quot;:1,
+ }
+</code></pre>
+<h2 id="主题推荐"><a href="#主题推荐" class="headerlink" title="主题推荐"></a>主题推荐</h2><p>theme-soda</p>
+<blockquote>
+<p>打开Settings - User配置文件<br>末尾追加 <code>&quot;theme&quot;: &quot;Soda Light 3.sublime-theme&quot;</code>【注意之前别漏了逗号】<br>保存之后就立马生效了</p>
+</blockquote>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><pre><code class="python">----- BEGIN LICENSE ----
+Andrew Weber
+Single User License
+EA7E-855605
+813A03DD 5E4AD9E6 6C0EEB94 BC99798F
+942194A6 02396E98 E62C9979 4BB979FE
+91424C9D A45400BF F6747D88 2FB88078
+90F5CC94 1CDC92DC 8457107A F151657B
+1D22E383 A997F016 42397640 33F41CFC
+E1D0AE85 A0BBD039 0E9C8D55 E1B89D5D
+5CDB7036 E56DE1C0 EFCC0840 650CD3A6
+B98FC99C 8FAC73EE D2B95564 DF450523
+------ END LICENSE ------
+</code></pre>
+<p><code>sublime 3103 License</code></p>
+<pre><code>—– BEGIN LICENSE —–
+Alexey Plutalov
+Single User License
+EA7E-860776
+3DC19CC1 134CDF23 504DC871 2DE5CE55
+585DC8A6 253BB0D9 637C87A2 D8D0BA85
+AAE574AD BA7D6DA9 2B9773F2 324C5DEF
+17830A4E FBCF9D1D 182406E9 F883EA87
+E585BBA1 2538C270 E2E857C2 194283CA
+7234FF9E D0392F93 1D16E021 F1914917
+63909E12 203C0169 3F08FFC8 86D06EA8
+73DDAEF0 AC559F30 A6A67947 B60104C6
+—— END LICENSE ——
+</code></pre>
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2015/Sublime-Text3" data-title="Sublime Text 3 简记" data-url="https://v4if.github.io/2015/Sublime-Text3/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

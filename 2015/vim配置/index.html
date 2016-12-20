@@ -1,0 +1,277 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">vim配置</h1>
+                <div class="pui-article-subtitle">
+                    发表于2015-12-10
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>所有的配置目录都是在自己的家目录下，一共涉及到两个文件，.vimrc文件和.vim目录，没有的可以自己在家目录下创建，.vimrc主要放置一些配置文件，.vim目录主要放置一些需要的插件<br><a id="more"></a></p>
+<h2 id="vimrc配置"><a href="#vimrc配置" class="headerlink" title=".vimrc配置"></a>.vimrc配置</h2><pre><code class="bash">&quot;-------------------------------
+&quot;    VIM配置
+&quot;    最后修改时间：2015-12-10
+&quot;-------------------------------
+
+syntax on                        &quot; 使用语法高亮
+set autoread                     &quot; 正在编辑文件被其他程序改动时自动重新加载
+set nocp                         &quot; 使用不兼容 vi 的模式
+
+set autoindent                   &quot; 设置自动对齐(缩进)
+set smartindent                  &quot; 智能对齐方式
+set wrap                         &quot; 自动换行
+set linebreak                    &quot; 整词换行
+
+set cindent                      &quot; 使用 C/C++ 语言的自动缩进方式
+set backspace=2                  &quot; 设置退格键可用
+set mouse=a                      &quot; 使用鼠标
+set number                       &quot; 显示行号
+set cul                          &quot; 显示当前行下划线
+
+set expandtab                    &quot; tab 自动替换为空格
+set tabstop=2                    &quot; 设置制表符(tab键)的宽度
+set softtabstop=2                &quot; 设置软制表符的宽度
+set shiftwidth=2                 &quot; 自动缩进所使用的空白长度
+
+scriptencoding utf-8             &quot; 设置编码
+
+set cursorline                   &quot; 高亮当前行
+
+highlight clear SignColumn
+highlight clear LineNr
+
+set laststatus=2                 &quot; 总显示最后一个窗口的状态行
+set t_Co=256                     &quot; 开启vim 256色
+
+colorscheme ron                  &quot; 设置配色方案
+</code></pre>
+<h2 id="插件管理vundle"><a href="#插件管理vundle" class="headerlink" title="插件管理vundle"></a>插件管理vundle</h2><h3 id="首先需要安装插件管理器vundle"><a href="#首先需要安装插件管理器vundle" class="headerlink" title="首先需要安装插件管理器vundle"></a>首先需要安装插件管理器vundle</h3><p><a href="https://github.com/VundleVim/Vundle.vim" target="_blank" rel="external">vundle  git  仓库</a><br>可以使用git安装vundle<br><code>git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></p>
+<h3 id="编辑-vimrc"><a href="#编辑-vimrc" class="headerlink" title="编辑.vimrc"></a>编辑.vimrc</h3><p>安装好vundle之后在.vimrc的开头添加以下内容：</p>
+<pre><code class="bash">&quot; vundle 配置
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+&quot; let Vundle manage Vundle, required
+Plugin &#39;VundleVim/Vundle.vim&#39;
+
+Plugin &#39;tpope/vim-fugitive&#39;         &quot; 配色相关
+
+call vundle#end()
+filetype plugin indent on
+</code></pre>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>打开vim，在命令模式下输入：<br><code>:PluginInstall</code><br>此时添加在.vimrc里的插件就正在安装，安装完成后，左下角就会出现Done！</p>
+<h2 id="vim插件"><a href="#vim插件" class="headerlink" title="vim插件"></a>vim插件</h2><p>把插件安装在~/.vim/bundle/目录下，方便插件的管理</p>
+<h3 id="vim-airline"><a href="#vim-airline" class="headerlink" title="vim-airline"></a>vim-airline</h3><p>底部状态栏插件<br><code>git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline</code></p>
+<hr>
+
+<p>这里选用的是别人配置好的<a href="https://github.com/hurley25/vim-set" target="_blank" rel="external">vim-set</a></p>
+<h2 id="Thanks-to-“浅墨的部落格”"><a href="#Thanks-to-“浅墨的部落格”" class="headerlink" title="Thanks to “浅墨的部落格”"></a>Thanks to “浅墨的部落格”</h2><p>下面是自己git clone之后做的一些修改</p>
+<h3 id="修改info"><a href="#修改info" class="headerlink" title="修改info"></a>修改info</h3><p>vim-&gt;bundle-&gt;vim-plugins-&gt;c-support-&gt;templates</p>
+<h3 id="修改热键冲突"><a href="#修改热键冲突" class="headerlink" title="修改热键冲突"></a>修改热键冲突</h3><p>我遇到一个问题，就是 <leader>is 这个按键已经被 c-support 使用了，每次启动vim 都会提示：</leader></p>
+<blockquote>
+<p>Mapping already in use: “<localleader>is”, mode “n”<br>Mapping already in use: “<localleader>is”, mode “i”</localleader></localleader></p>
+</blockquote>
+<p>所以我将 <leader>is 改为 <leader>ihsa 。</leader></leader></p>
+<h3 id="clang-library-path路径问题"><a href="#clang-library-path路径问题" class="headerlink" title="clang_library_path路径问题"></a>clang_library_path路径问题</h3><blockquote>
+<p>Loading libclang failed, falling back to clang executable.  Consider setting g:c<br>lang_library_path</p>
+</blockquote>
+<p>需要clang的动态链接库，在系统里面存在clang的动态链接库，只需要一个软链接就可以了<br><code>ln -s /usr/lib/llvm-3.5/lib/libclang.so.1 /usr/lib/libclang.so</code></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2015/vim配置" data-title="vim配置" data-url="https://v4if.github.io/2015/vim配置/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

@@ -1,0 +1,344 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">kali rolling 问题修复</h1>
+                <div class="pui-article-subtitle">
+                    发表于2015-12-02
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>kali rolling下遇到的一些常见问题归类整理，并给出对应的修复办法</p>
+<a id="more"></a>
+<h2 id="“0-Waiting-for-headers-”问题的解决"><a href="#“0-Waiting-for-headers-”问题的解决" class="headerlink" title="“0%[Waiting for headers]”问题的解决"></a>“0%[Waiting for headers]”问题的解决</h2><p>sudo apt-get install software<br>时一直等，最后以失败告终<br>解决：<br>起初，修改了更新源，还是没有解决<br>后来<br>cd /var/cache/apt/archives<br>rm -rf parial<br>勉强解决</p>
+<h2 id="完美解决-Linux-下-Sublime-Text-中文输入"><a href="#完美解决-Linux-下-Sublime-Text-中文输入" class="headerlink" title="完美解决 Linux 下 Sublime Text 中文输入"></a>完美解决 Linux 下 Sublime Text 中文输入</h2><p>1.保存下面的代码为sublime_imfix.c </p>
+<pre><code class="c">/*
+sublime-imfix.c
+Use LD_PRELOAD to interpose some function to fix sublime input method support for linux.
+By Cjacker Huang &lt;jianzhong.huang at i-soft.com.cn&gt;
+
+gcc -shared -o libsublime-imfix.so sublime_imfix.c  `pkg-config --libs --cflags gtk+-2.0` -fPIC
+LD_PRELOAD=./libsublime-imfix.so sublime_text
+*/
+#include &lt;gtk/gtk.h&gt;
+#include &lt;gdk/gdkx.h&gt;
+typedef GdkSegment GdkRegionBox;
+
+struct _GdkRegion
+{
+  long size;
+  long numRects;
+  GdkRegionBox *rects;
+  GdkRegionBox extents;
+};
+
+GtkIMContext *local_context;
+
+void
+gdk_region_get_clipbox (const GdkRegion *region,
+            GdkRectangle    *rectangle)
+{
+  g_return_if_fail (region != NULL);
+  g_return_if_fail (rectangle != NULL);
+
+  rectangle-&gt;x = region-&gt;extents.x1;
+  rectangle-&gt;y = region-&gt;extents.y1;
+  rectangle-&gt;width = region-&gt;extents.x2 - region-&gt;extents.x1;
+  rectangle-&gt;height = region-&gt;extents.y2 - region-&gt;extents.y1;
+  GdkRectangle rect;
+  rect.x = rectangle-&gt;x;
+  rect.y = rectangle-&gt;y;
+  rect.width = 0;
+  rect.height = rectangle-&gt;height; 
+  //The caret width is 2; 
+  //Maybe sometimes we will make a mistake, but for most of the time, it should be the caret.
+  if(rectangle-&gt;width == 2 &amp;&amp; GTK_IS_IM_CONTEXT(local_context)) {
+        gtk_im_context_set_cursor_location(local_context, rectangle);
+  }
+}
+
+//this is needed, for example, if you input something in file dialog and return back the edit area
+//context will lost, so here we set it again.
+
+static GdkFilterReturn event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer im_context)
+{
+    XEvent *xev = (XEvent *)xevent;
+    if(xev-&gt;type == KeyRelease &amp;&amp; GTK_IS_IM_CONTEXT(im_context)) {
+       GdkWindow * win = g_object_get_data(G_OBJECT(im_context),&quot;window&quot;);
+       if(GDK_IS_WINDOW(win))
+         gtk_im_context_set_client_window(im_context, win);
+    }
+    return GDK_FILTER_CONTINUE;
+}
+
+void gtk_im_context_set_client_window (GtkIMContext *context,
+          GdkWindow    *window)
+{
+  GtkIMContextClass *klass;
+  g_return_if_fail (GTK_IS_IM_CONTEXT (context));
+  klass = GTK_IM_CONTEXT_GET_CLASS (context);
+  if (klass-&gt;set_client_window)
+    klass-&gt;set_client_window (context, window);
+
+  if(!GDK_IS_WINDOW (window))
+    return;
+  g_object_set_data(G_OBJECT(context),&quot;window&quot;,window);
+  int width = gdk_window_get_width(window);
+  int height = gdk_window_get_height(window);
+  if(width != 0 &amp;&amp; height !=0) {
+    gtk_im_context_focus_in(context);
+    local_context = context;
+  }
+  gdk_window_add_filter (window, event_filter, context); 
+}
+</code></pre>
+<p>2.编译动态库：<br>gcc -shared -o libsublime_imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>（编译环境和GTK的dev包请自行安装）<br>apt-get install build-essential<br>apt-get install libgtk2.0-dev<br>3.设置 LD_PRELOAD 并启动 Sublime Text：<br>LD_PRELOAD=./libsublime_imfix.so sublime_text<br>为了不用每次启动Sublime Text都打这么一长串东西，写了个启动Sublime的脚本： </p>
+<pre><code class="bash">#!/bin/bash
+subl_home=&quot;~/software/sublime_text_3&quot;
+ld_lib=&quot;$subl_home/libsublime_imfix.so&quot;
+sh -c &quot;LD_PRELOAD=$ld_lib $subl_home/sublime_text&quot;
+</code></pre>
+<p>将脚本保存为<code>subl_fcitx</code>，chmod +x，然后cp到/usr/bin/目录下直接执行就可以了</p>
+<h2 id="看视频自动黑屏休眠问题"><a href="#看视频自动黑屏休眠问题" class="headerlink" title="看视频自动黑屏休眠问题"></a>看视频自动黑屏休眠问题</h2><p>setting-&gt;power-&gt;blankscrenn(锁屏时间)设置为never</p>
+<h2 id="hexo静态博客部署问题"><a href="#hexo静态博客部署问题" class="headerlink" title="hexo静态博客部署问题"></a>hexo静态博客部署问题</h2><p>1.npm install hexo-cli -g安装完成之后hexo命令会放在node/bin文件夹下，需要添加软链接或者更改环境变量才可以使用hexo命令<br>2.hexo deploy时Deployer not found : git错误<br>–安装 npm install hexo-deployer-git –save<br>–将deploy 的 type由github改为git</p>
+<h2 id="64位开启32位架构-ia32-libs问题"><a href="#64位开启32位架构-ia32-libs问题" class="headerlink" title="64位开启32位架构,ia32-libs问题"></a>64位开启32位架构,ia32-libs问题</h2><p>该软件包已经被其他版本替代，只要启用32位架构就可以了，不用安装ia32-libs，在安装32位软件的过程中会自动安装需要的依赖。<br>启用32位架构：<br>dpkg –add-architecture i386<br>sudo apt-get update<br>不用ia32-libs也能开到兼容32位，如果实在不行可以用下面命令安装其他版本替代<br><code>apt-get install libgtk2.0-0:i386</code><br><code>apt-get install lib32ncurses5</code></p>
+<h2 id="解决Could-not-get-lock"><a href="#解决Could-not-get-lock" class="headerlink" title="解决Could not get lock"></a>解决Could not get lock</h2><p>/var/cache/apt/archives/lock<br>在apt-get upgrade的时候，遇到：<br>E: Could not get lock /var/cache/<br>apt/archives/lock - open (11 Resource temporarily unavailable)<br>E: Unable to lock the download directory<br>解决办法如下：</p>
+<pre><code class="bash">sudo rm -rf /var/cache/apt/archives/lock
+sudo apt-get update
+</code></pre>
+<p>然后apt-get就恢复正常了。</p>
+<h2 id="解决dpkg-status-database-is-lock…"><a href="#解决dpkg-status-database-is-lock…" class="headerlink" title="解决dpkg status database is lock…"></a>解决dpkg status database is lock…</h2><p>原因是包管理器没有正确关闭。需要重启计算机或者重新打开终端 输入：</p>
+<pre><code class="bash">sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+</code></pre>
+<p>然后重新安装包。</p>
+<h2 id="缩短终端目录"><a href="#缩短终端目录" class="headerlink" title="缩短终端目录"></a>缩短终端目录</h2><p>平时我们使用linux终端命令行的时候，常常会被一个问题困扰，那就是文件路径过长，有时候甚至超过了一行，这样看起来非常别扭，其实只要两步就可以解决这个问题：<br>1.修改.bashrc文件（用户根目录下）<br>vim 打开.bashrc文件，找到如下这行：</p>
+<pre><code class="bash">if [ &quot;$color_prompt &quot; = yes ]; then
+    PS1 =&#39;${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W \[\033[00m\]\$ &#39;
+else
+    PS1 =&#39;${debian_chroot:+($debian_chroot)}\u@\h:\W \$ &#39;
+</code></pre>
+<p>将上面这行代码中的小写w改为大写的W，保存退出(wq)<br>2.在终端下执行 source .bashrc<br>完成上面两步操作之后，重新进入到一个目录，此时在终端下只显示当前文件所在目录名称。</p>
+<h2 id="kali修复-add-apt-repository"><a href="#kali修复-add-apt-repository" class="headerlink" title="kali修复 add-apt-repository"></a>kali修复 add-apt-repository</h2><p>add-apt-repository是一个导入ppa源的工具，不知为何kali-linux去掉了</p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>apt-get install python-software-properties              </p>
+<h3 id="编辑vim-add-apt-repository"><a href="#编辑vim-add-apt-repository" class="headerlink" title="编辑vim add-apt-repository"></a>编辑<code>vim add-apt-repository</code></h3><pre><code class="bash">#!/bin/bash
+if [ $# -eq 1 ]
+    NM=`uname -a &amp;&amp; date`
+    NAME=`echo $NM | md5sum | cut -f1 -d&quot; &quot;`
+then
+    ppa_name=`echo &quot;$1&quot; | cut -d&quot;:&quot; -f2 -s`
+    if [ -z &quot;$ppa_name&quot; ]
+    then
+        echo &quot;PPA name not found&quot;
+        echo &quot;Utility to add PPA repositories in your debian machine&quot;
+        echo &quot;$0 ppa:user/ppa-name&quot;
+    else
+        echo &quot;$ppa_name&quot;
+        echo &quot;deb http://ppa.launchpad.net/$ppa_name/ubuntu lucid main&quot; &gt;&gt; /etc/apt/sources.list
+        apt-get update &gt;&gt; /dev/null 2&gt; /tmp/${NAME}_apt_add_key.txt
+        key=`cat /tmp/${NAME}_apt_add_key.txt | cut -d&quot;:&quot; -f6 | cut -d&quot; &quot; -f3`
+        apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key
+        rm -rf /tmp/${NAME}_apt_add_key.txt
+    fi
+else
+    echo &quot;Utility to add PPA repositories in your debian machine&quot;
+    echo &quot;$0 ppa:user/ppa-name&quot;
+fi
+</code></pre>
+<h3 id="继续执行"><a href="#继续执行" class="headerlink" title="继续执行"></a>继续执行</h3><p><code>cp add-apt-repository.sh /usr/sbin/add-apt-repository</code><br><code>chmod o+x /usr/sbin/add-apt-repository</code><br><code>chown root:root /usr/sbin/add-apt-repository</code></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2015/kali rolling问题修复" data-title="kali rolling 问题修复" data-url="https://v4if.github.io/2015/kali rolling问题修复/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

@@ -1,0 +1,384 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">Discuz_thought</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-08-22
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>现在大部分网站后台程序都采用了Model-View-Control架构，数据、前端界面和逻辑控制相分离，开发速度更加高效。同时将动态页面静态化，部分程度上缓解了服务器的请求。本文主要是为了最近在Discuz系统上做的一个二次开发，然后写下自己对dz系统的理解。</p>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><p>这也是我第一次接触Discuz系统，先说说我感触最深的两点，一是MVC架构，二是动态页面静态化。<br>我们先接触一下MVC框架是什么样子的，然后再去简单剖析一下Discuz系统的渲染流程。形象理解一下Model负责获取整理数据，View负责将取得的数据组织、美化，并最终向用户终端输出，而Controller主要作为一个M和V的桥梁，负责将M产生的数据交给V去显示。<br>整个工作流程如下图：<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/discuz_mvc_thought.png-rb" alt="discuz_thought" class="pui-img-article"><br>实现了数据和模板视图的隔离，两者通过Controller进行连接。<br>接下来说一下PHP页面静态化，先看一下概念解释：</p>
+<blockquote>
+<p>PHP静态化分为：纯静态化 和 伪静态化；纯静态化又分为：局部静态化 和 完全静态化</p>
+<p>纯静态化：是把PHP生成的动态页面保存成静态的html文件，用户访问该静态页面，而不是用户每一次访问都重新生成一张相同的网页，优点就是减小服务器开销，<br>　　局部静态化：是生成的静态文件中，有局部的数据还是通过ajax技术动态获取的；<br>　　完全静态化：即不存在动态获取数据的情况，所以内容都来自静态的html页面</p>
+<p>伪静态化：其实还是动态访问，其实质是动态生成数据，你访问的网址类似于<code>http://yourhost.com/index/post/12</code>,是一个静态地址，该地址多见于博客地址，但伪静态化中，你访问的网址实际上经过服务器解析，还是会解析成类似于<code>http://yourhost.com/?c=index&amp;a=post&amp;id=12</code>的地址，所以称之为伪静态化<br>　　伪静态的优点：美观；便于搜索引擎收录</p>
+</blockquote>
+<p>形象来说就是把不经常变动的数据一次动态获取之后写到静态的htm文件中，在允许的时间范围内就可以直接访问静态的htm文件，减小服务器的请求量，局部需要更新的数据可以采用ajax请求技术进行异步更新。</p>
+<h3 id="简单框架实现"><a href="#简单框架实现" class="headerlink" title="简单框架实现"></a>简单框架实现</h3><p>这里简单实现了一个框架，代码目录结构如下：</p>
+<pre><code class="bash">/--
+ -- cache/
+     test_show_static.htm
+ -- libs/
+     -- Controller/
+        testController.class.php
+     -- Model/
+        testModel.class.php
+     -- View/
+        testView.class.php
+function.php
+index.php
+index_cache.php
+</code></pre>
+<p><code>/</code>为html文件的根目录，cache目录下存储的是PHP页面静态化之后的静态htm文件，libs目录下是我们MVC架构的主要代码。<br><code>function.php</code>放置一些常用函数，这里就简单实现了MVC分别对应的函数。<br><code>index.php</code>没有PHP页面静态化的入口文件<br><code>index_cache.php</code>添加了PHP页面静态化的入口文件<br>在框架下面写代码命名要非常规范，因为到底调用哪个控制器、数据、模板视图都是通过文件的名字去进行查找的，而且要放置在对应的目录下面。<br>到了该上代码的时间了orz，一个一个来贴吧。<br>test_show_static.htm这个文件是PHP页面静态化自动生成的htm数据。<br>testController.class.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 11:40:18
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 12:02:54
+ */
+class testController
+{
+
+    function show()
+    {
+        $testModel = M(&#39;test&#39;);
+        $data = $testModel-&gt;get();
+
+        $testView = V(&#39;test&#39;);
+        $testView-&gt;display($data);
+    }
+}
+?&gt;
+</code></pre>
+<p>testModel.class.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 11:40:05
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 11:42:47
+ */
+class testModel
+{
+    function get()
+    {
+        return &quot;v4if&quot;;
+    }
+}
+?&gt;
+</code></pre>
+<p>testView.class.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 11:39:50
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 11:43:51
+ */
+class testView
+{
+    function display($data)
+    {
+        echo $data;
+    }
+}
+?&gt;
+</code></pre>
+<p>function.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 11:45:38
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 14:55:46
+ */
+
+function C($name, $method)
+{
+    require_once(&#39;libs/Controller/&#39;.$name.&#39;Controller.class.php&#39;);
+    eval(&#39;$obj = new &#39;.$name.&#39;Controller();$obj -&gt;&#39;.$method.&#39;();&#39;);
+}
+
+function M($name)
+{
+    require_once(&#39;libs/Model/&#39;.$name.&#39;Model.class.php&#39;);
+    eval(&#39;$obj = new &#39;.$name.&#39;Model();&#39;);
+    return $obj;
+}
+
+function V($name)
+{
+    require_once(&#39;libs/View/&#39;.$name.&#39;View.class.php&#39;);
+    eval(&#39;$obj = new &#39;.$name.&#39;View();&#39;);
+    return $obj;
+}
+?&gt;
+</code></pre>
+<p>index.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 11:38:33
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 14:54:09
+ */
+
+error_reporting(E_ALL);
+ini_set(&#39;display_errors&#39;,&#39;On&#39;);
+
+//url形式  index.php?c=控制器名&amp;m=方法名
+require_once(&#39;function.php&#39;);
+
+$controller = $_GET[&#39;c&#39;];
+$method = $_GET[&#39;m&#39;];
+
+C($controller, $method);
+?&gt;
+</code></pre>
+<p>index_cache.php文件：</p>
+<pre><code class="php">&lt;?php
+/**
+ * @Author: v4if
+ * @Date:   2016-08-31 15:06:23
+ * @Last Modified by:   root
+ * @Last Modified time: 2016-08-31 15:15:17
+ */
+error_reporting(E_ALL);
+ini_set(&#39;display_errors&#39;,&#39;On&#39;);
+
+//url形式  index.php?c=控制器名&amp;m=方法名
+$controller = $_GET[&#39;c&#39;];
+$method = $_GET[&#39;m&#39;];
+
+$static_tpl = &#39;cache/&#39;.$controller.&#39;_&#39;.$method.&#39;_static.htm&#39;;
+if (is_file($static_tpl) &amp;&amp; (time() - fileatime($static_tpl) &lt; 1200)) {
+    require_once($static_tpl);
+} else {
+    ob_start();
+    require_once(&#39;function.php&#39;);
+    C($controller, $method);
+    $html = ob_get_contents();
+    file_put_contents($static_tpl, $html);
+}
+?&gt;
+</code></pre>
+<h3 id="对Discuz的简单流程剖析"><a href="#对Discuz的简单流程剖析" class="headerlink" title="对Discuz的简单流程剖析"></a>对Discuz的简单流程剖析</h3><p>先列一下经常用到的几个比较重要的目录</p>
+<pre><code class="bash">/--
+ -- data/             附件数据、数据库与文件缓存
+ -- source/             程序模块功能处理目录
+     -- module/         程序功能模块程序包
+     -- function/         DX自定义函数库
+     -- class/         核心类库
+ -- template/            模板目录
+ admin.php             后台入口文件
+ forum.php             论坛频道入口文件
+ index.php             首页
+ portal.php             门户入口文件
+</code></pre>
+<p>上面基本上都是我们经常需要改动测试的目录或文件。<br>在安装Discuz系统的时候需要注意一下X3.2不兼容PHP7的版本，如果PHP环境是7.0及以上的，请从这里下载兼容版本 <a href="https://github.com/branchzero/discuz-x32-php7/releases" target="_blank" rel="external">discuz-x32-php7</a>。还有就是对Discuz根目录赋予可读可写权限，linux下可以通过执行<code>chmod -R 777 /var/www/html</code>命令即可。<br>接下来我们尝试跟踪一个具体的网址来看看Discuz的渲染流程，就以默认页面<code>http://localhost/forum.php</code>主页为例。<br>这里需要明确一点，Discuz的入口地址是index.php文件，forum.php文件是index.php通过重定向然后访问到的。<br>然后打开fourm.php文件我们可以看到结尾有这样一句话：<br><code>require DISCUZ_ROOT.&#39;./source/module/forum/forum_&#39;.$mod.&#39;.php&#39;;</code><br>也就是说是通过传递进来的$mod参数决定我们将要调用的控制器页面，可以修改一下Discuz的源码，看看$mod参数具体是什么值，可以在<code>require</code>前面加一句<code>echo $mod;</code>将$mod的值输出到页面上，然后刷新页面可以看到输出的<code>index</code>。<br>即接下来调用的是<code>/source/module/forum/forum_index.php&#39;</code>文件，可以看到在forum_index.php文件的433行有一个template的模板调用<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-08-31-171421.png-rb" alt="discuz_thought" class="pui-img-article"><br>继续跟踪下去我们可以找到template函数的声明文件，在<code>/source/function/function_core.php</code>文件的519行可以看到template函数的定义<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-08-31-172420.png-rb" alt="discuz_thought" class="pui-img-article"><br>然后可以在template函数里面插入我们自己的输出语句，在function_core.php文件的630行插入<code>echo &#39;v4if+&#39;.$tplfile.&#39;+v4if&#39;;</code>语句，看看具体调用了哪些模板文件进行的页面渲染，然后刷新页面可以看到页面输出内容：</p>
+<pre><code class="bash">v4if+./template/default/forum/discuz.htm+v4if
+v4if+./template/default/common/header.htm+v4if
+v4if+./template/default/common/header_userstatus.htm+v4if
+v4if+./template/default/member/login_simple.htm+v4if
+v4if+./template/default/common/footer.htm+v4if
+</code></pre>
+<p>到这里之后具体调用了哪些模板文件就一目了然了，可以根据自己的业务需求对相应的php或者htm文件进行修改。</p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/Discuz_MVC_thought" data-title="Discuz_thought" data-url="https://v4if.github.io/2016/Discuz_MVC_thought/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

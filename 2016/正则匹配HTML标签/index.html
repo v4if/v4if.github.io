@@ -1,0 +1,257 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">正则匹配HTML标签</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-03-27
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>正则模式匹配HTML标签<code>&lt;tag&gt;&lt;/tag&gt;</code>，对已经编辑好的静态文本标签进行嵌套包裹处理，比如给<code>&lt;img&gt;</code>包裹上<code>&lt;a&gt;&lt;/a&gt;</code>，即处理之后的内容为<code>&lt;a href=&quot;&quot;&gt;&lt;img src=&quot;&quot;&gt;&lt;/a&gt;</code>。<br>正则也是看了总忘，然后借着这篇文章把知识也梳理一下。</p>
+<a id="more"></a>
+<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>Hexo静态博客本地解析的时候图片都解析为<code>&lt;img&gt;</code>标签，经过浏览器渲染之后表现出来的结果就是图片不能点击，也不能进行放大，这样一些比较小的图片在博客里面不太清楚。<br>给<code>&lt;img&gt;</code>标签包裹上<code>&lt;a&gt;&lt;/a&gt;</code>标签让图片以链接的内容存在。</p>
+<pre><code class="html">&lt;a class=&quot;post-img-nav&quot; title=&quot;&quot; target=&quot;_blank&quot; href=&quot;http://7xot8c.com1.z0.glb.clouddn.com/zoro.jpeg&quot;&gt;
+    &lt;img alt=&quot;zero&quot; src=&quot;http://7xot8c.com1.z0.glb.clouddn.com/zoro.jpeg&quot;&gt;
+&lt;/a&gt;
+</code></pre>
+<p>效果如下图，可以点击图片打开链接<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/zoro.jpeg-rb" alt="zero" class="pui-img-article"></p>
+<h3 id="快速参考"><a href="#快速参考" class="headerlink" title="快速参考"></a>快速参考</h3><p>正则表达式wiki词条</p>
+<blockquote>
+<p>正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。一个正则表达式通常被成为一个模式（pattern），为用来描述或者匹配一系列符合某个句法规则的字符串。例如：Handel、Händel和Haendel这三个字符串，都可以由「H(a|ä|ae)ndel」这个模式来描述。</p>
+</blockquote>
+<p>Regex quick reference</p>
+<pre><code class="bash">[abc]        A single character: a, b or c
+[^abc]      Any single character but a, b, or c
+[a-z]       Any single character in the range a-z
+[a-zA-Z]    Any single character in the range a-z or A-Z
+^           Start of line
+$           End of line
+\A          Start of string
+\z          End of string
+.           Any single character
+\s          Any whitespace character
+\S          Any non-whitespace character
+\d          Any digit
+\D          Any non-digit
+\w          Any word character (letter, number, underscore)
+\W          Any non-word character
+\b          Any word boundary character
+(...)       Capture everything enclosed
+(a|b)       a or b
+a?          Zero or one of a
+a*          Zero or more of a
+a+          One or more of a
+a{3}        Exactly 3 of a
+a{3,}       3 or more of a
+a{3,6}      Between 3 and 6 of a
+</code></pre>
+<h3 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h3><p>以一个邮箱的正则匹配作为例子<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/regular-expression.gif-rb" alt="e-mail" class="pui-img-article"></p>
+<h3 id="博客解析代码"><a href="#博客解析代码" class="headerlink" title="博客解析代码"></a>博客解析代码</h3><p>ejs模板解析</p>
+<pre><code class="html">&lt;div class=&quot;article-post&quot;&gt;
+  &lt;%
+     var str = page.content;
+     //非贪婪模式
+     var reg = /&lt;img\s*src=&quot;(.*?)&quot;\s*alt=&quot;(.*?)&quot;.*?&gt;/g;         
+     var replace = &#39;&lt;a class=&quot;post-img-nav&quot; href=&quot;$1&quot; target=&quot;_blank&quot; title=&quot;&quot;&gt;&lt;img src=&quot;$1&quot; alt=&quot;$2&quot;&gt;&lt;/a&gt;&#39;;
+     var article = str.replace(reg,replace);
+  %&gt;
+  &lt;%-article %&gt;
+&lt;/div&gt;
+</code></pre>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/正则匹配HTML标签" data-title="正则匹配HTML标签" data-url="https://v4if.github.io/2016/正则匹配HTML标签/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

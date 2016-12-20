@@ -1,0 +1,447 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">细说PHP笔记</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-01-16
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>兄弟连的书《细说PHP笔记》，web开发入门的必备书籍，大致浏览一遍有个印象总是好的，语言类的书籍一通百通，过一遍就可以了没有必要精读，语言的精通需要在项目的实战中去锤炼的，这里将自己认为值得一记的地方做了一个摘抄<br><a id="more"></a></p>
+<h2 id="HTML的设计与应用"><a href="#HTML的设计与应用" class="headerlink" title="HTML的设计与应用"></a>HTML的设计与应用</h2><h3 id="HTML常用字符实体"><a href="#HTML常用字符实体" class="headerlink" title="HTML常用字符实体"></a>HTML常用字符实体</h3><pre><code class="html">space   &amp;nbsp
+&lt;       &amp;lt         &gt;       &amp;gt
+&amp;       &amp;amp
+&quot;       &amp;quot
+&#39;       &amp;apos
+</code></pre>
+<h3 id="HTML文档头部元素"><a href="#HTML文档头部元素" class="headerlink" title="HTML文档头部元素"></a>HTML文档头部元素<head></head></h3><pre><code class="html">&lt;title&gt;&lt;/title&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;/&gt;   &lt;!--在头部链接CSS文件位置--&gt;
+
+&lt;meta charset=&quot;utf-8&quot;&gt;  &lt;!--定义文件信息的名称、内容等--&gt;
+&lt;meta name=&quot;keywords&quot; content=&quot;博客,信息安全&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;个人技术博客&quot;&gt;
+</code></pre>
+<h3 id="HTML文档主题标记-lt-body-gt"><a href="#HTML文档主题标记-lt-body-gt" class="headerlink" title="HTML文档主题标记&lt;body&gt;"></a>HTML文档主题标记<code>&lt;body&gt;</code></h3><p><code>&lt;body&gt;</code>标签的常用属性:text,bgcolor,background,topmargin,leftmargin<br>4个通用属性,在任何HTML标签中都可以使用:id,name,class,style</p>
+<h3 id="格式标签"><a href="#格式标签" class="headerlink" title="格式标签"></a>格式标签</h3><p>常见的HTML格式标签:<code>&lt;br&gt;,&lt;p&gt;,&lt;center&gt;,&lt;pre&gt;,&lt;li&gt;,&lt;ul&gt;,&lt;ol&gt;,&lt;hr&gt;</code></p>
+<h3 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h3><p>常见的文本风格标签:<code>&lt;hn&gt;,&lt;b&gt;,&lt;i&gt;,&lt;u&gt;,&lt;sub&gt;,&lt;sup&gt;,&lt;font&gt;,&lt;cite&gt;,&lt;em&gt;,&lt;srong&gt;,&lt;small&gt;,&lt;big&gt;</code></p>
+<h3 id="创建图像和链接"><a href="#创建图像和链接" class="headerlink" title="创建图像和链接"></a>创建图像和链接</h3><p>插入图片,默认情况下文字和图片处于同一行<br><code>&lt;img src=&quot;image/favicon.jpg&quot; alt=&quot;favicon&quot; width=&quot;80&quot; height=&quot;80&quot; border=&quot;2&quot;&gt;</code></p>
+<h3 id="建立锚点和超链接"><a href="#建立锚点和超链接" class="headerlink" title="建立锚点和超链接"></a>建立锚点和超链接</h3><p>在网页中定义锚点和链接,如果链接到对应的锚点位置，需要在锚点名前加一个”#”字符<br><code>&lt;a href=&quot;url&quot; name=&quot;&quot; target=&quot;&quot;&gt;链接文字&lt;/a&gt;</code></p>
+<p>target属性指定要打开的链接所使用的浏览器的窗口名称</p>
+<ul>
+<li>_self: 在当前窗口中打开链接文件，是默认值</li>
+<li>_blank: 开启一个新的窗口打开链接文件</li>
+<li>_parent: 在父级窗口中打开文件，常用于框架页面</li>
+<li>_top: 在顶层窗口中打开文件，常用于框架页面</li>
+</ul>
+<pre><code class="html">&lt;a name=&quot;anchor_one&quot;&gt;   &lt;!--声明一个锚点--&gt;
+&lt;a href=&quot;#anchor_one&quot;&gt;链接到当前页面的锚点位置&lt;/a&gt;
+</code></pre>
+<h3 id="使用HTML表格"><a href="#使用HTML表格" class="headerlink" title="使用HTML表格"></a>使用HTML表格</h3><p>在HTML文档中，表格需要通过表格标记<code>&lt;table&gt;</code>、行标记<code>&lt;tr&gt;</code>、单元格标记<code>&lt;th&gt;</code>或<code>&lt;td&gt;</code>嵌套完成<br><code>&lt;table&gt;</code>标签常用属性:align,border,width,height,cellspacing,cellpadding</p>
+<pre><code class="html">&lt;table border=&quot;2&quot; cellspacing=&quot;0&quot; cellpadding=&quot;2&quot;&gt;
+    &lt;caption&gt;表格名称&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;表格头&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;表格数据&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p><code>&lt;caption&gt;</code>标签用于定义表格标题的位置，可以由align属性来设置，该标记应放在<code>&lt;table&gt;</code>标签内，在表格行<code>&lt;tr&gt;</code>之前</p>
+<h3 id="HTML框架结构-lt-frameset-gt"><a href="#HTML框架结构-lt-frameset-gt" class="headerlink" title="HTML框架结构&lt;frameset&gt;"></a>HTML框架结构<code>&lt;frameset&gt;</code></h3><h3 id="HTML表单设计"><a href="#HTML表单设计" class="headerlink" title="HTML表单设计"></a>HTML表单设计</h3><p>表单的各种输入域可以由<code>&lt;input&gt;</code>,菜单下拉列表域<code>&lt;select&gt;</code>,多行文本域<code>&lt;textarea&gt;</code>三个标签定义</p>
+<p>表单标记<code>&lt;form&gt;</code>常用属性:name,method,action,enctype,target<br>文本域和密码域<code>&lt;input&gt;</code>常用属性:type,name,value,size,maxlength<br>标签中提供了9种类型的输入区域，具体是哪一种类型由type属性决定:</p>
+<ul>
+<li>text  文本输入域</li>
+<li>password  密码输入域</li>
+<li>submit    表示这是一个提交按钮</li>
+<li>reset     表示这是一个重置按钮</li>
+<li>button    表示这是一个普通按钮，并不实现任何功能，需要和JavaScript等脚本语言一起使用</li>
+<li>radio     单选按钮</li>
+<li>checkbox  复选框</li>
+<li>hidden    隐藏域</li>
+</ul>
+<h2 id="层叠样式表CSS"><a href="#层叠样式表CSS" class="headerlink" title="层叠样式表CSS"></a>层叠样式表CSS</h2><h3 id="CSS规则的组成"><a href="#CSS规则的组成" class="headerlink" title="CSS规则的组成"></a>CSS规则的组成</h3><p>p选择器{<br>    attribute属性:value值;<br>}</p>
+<h3 id="长度单位"><a href="#长度单位" class="headerlink" title="长度单位"></a>长度单位</h3><ul>
+<li>em: 是一个大致与一个字符高度相同的单位</li>
+<li>px: 是一个像素的单位</li>
+<li>pt: 是一个磅的单位</li>
+<li>%:  是一个百分比</li>
+</ul>
+<h3 id="颜色单位和url值"><a href="#颜色单位和url值" class="headerlink" title="颜色单位和url值"></a>颜色单位和url值</h3><p>关键字通常有16个:aqua,black,blue,fuchsia,gray,green,lime,maroon,navy,olive,purple,red,silver,teal,white,yellow<br>RGB颜色则可以有以下4种形式:</p>
+<ul>
+<li>#rrggbb</li>
+<li>#rgb</li>
+<li>rgb(x,x,x) x是一个0~255的整数</li>
+<li>rgb(y%,y%,y%) y是一个0.0~100.0的整数<br>URL的格式为:url(addr)，addr是一个URL</li>
+</ul>
+<h3 id="在HTML文档中放置CSS的几种方式"><a href="#在HTML文档中放置CSS的几种方式" class="headerlink" title="在HTML文档中放置CSS的几种方式"></a>在HTML文档中放置CSS的几种方式</h3><p>内联样式表<br><code>&lt;p style=&quot;color:red&quot;&gt;这段的样式是红色的字体&lt;/p&gt;</code></p>
+<p>嵌入一个样式表</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    p{
+        color:red;
+    }
+&lt;/style&gt;
+</code></pre>
+<p>连接到一个外部的样式表<br><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;</code></p>
+<h3 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h3><p>HTML选择器，任何HTML元素都可以是一个CSS的选择器，用于找到和选择器同名的HTML元素<br><code>h1{color:red}</code></p>
+<p>类选择器<br><code>p.dark-row{background-color:#EAEAEA}</code><br><code>p.light-row{background-color:#F8F8F8}</code></p>
+<p>ID选择器，id用在唯一的元素上<br><code>#main{text-indent:3em}</code></p>
+<p>关联选择器<br><code>table a{color:red}      /*只有在表格&lt;table&gt;内的链接&lt;a&gt;改变了样式*/</code></p>
+<p>组合选择器<br><code>h1,h2,h3,h4,h5,h6{color:red}    /*使用组合选择器修饰标题*/</code></p>
+<p>伪元素选择器，是指对同一个HTML元素不同状态的一种定义方式</p>
+<pre><code class="html">a:link{color:red;}                       /*超链接没有任何动作前的状态*/
+a:hover{color:yellow; font-size:125%;}   /*光标移动到超链接上的状态*/
+a:active{color:blue; font-size:125%;}    /*选中超链接时的状态*/
+a:visited{color:green; font-size:80%;}   /*访问过的超链接的状态*/
+</code></pre>
+<h3 id="CSS常见样式属性和值-字体、文本、背景、位置、边框、列表"><a href="#CSS常见样式属性和值-字体、文本、背景、位置、边框、列表" class="headerlink" title="CSS常见样式属性和值:字体、文本、背景、位置、边框、列表"></a>CSS常见样式属性和值:字体、文本、背景、位置、边框、列表</h3><p>字体属性:font-family,font-size,font-style,font-weight,font-variant</p>
+<p>颜色属性:color</p>
+<p>背景属性:background-color,background-image,background-repeat,background-attachment,background-position</p>
+<p>文本属性:letter-spacing,word-spacing,text-decoration,text-align,text-indent,line-height</p>
+<p>边框属性:边框风格、边框宽度、边框颜色<br>border-style,border-width,border-color</p>
+<p>鼠标光标属性:cursor<br>默认的鼠标形状default、小手形状hand、交叉十字crosshair、文本选择器号text、Windows的沙漏形状wait、带有问号的鼠标help</p>
+<p>列表属性:list-style-type,list-style-image,list-style-position</p>
+<h3 id="关于盒模型"><a href="#关于盒模型" class="headerlink" title="关于盒模型"></a>关于盒模型</h3><p>span是内联的，div是块级元素</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    #box{
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        border: 5px solid #ccc;
+        margin: 20px;
+    }
+&lt;/style&gt;
+</code></pre>
+<h3 id="关于定位和浮动"><a href="#关于定位和浮动" class="headerlink" title="关于定位和浮动"></a>关于定位和浮动</h3><p>参与页面布局的CSS属性:position,top,left,text-align,line-height,z-index,display,visibility,overflow,float,clear</p>
+<h3 id="盒子区块框的定位"><a href="#盒子区块框的定位" class="headerlink" title="盒子区块框的定位"></a>盒子区块框的定位</h3><p>区块的定位有普通流、绝对定位和浮动三种基本的定位机制。<br>相对定位是”相对于”它在普通流的起点位置进行移动，绝对定位不会占据普通流中现有区块框的空间，浮动的元素要指定一个明确的宽度，否则它们会尽可能的窄。</p>
+<pre><code class="html">&lt;style type=&quot;text/css&quot;&gt;
+    .clear{
+        clear: right;
+    }
+&lt;/style&gt;
+&lt;div class=&quot;clear&quot;&gt;&lt;/div&gt;   &lt;!--这个区块专门用于清除浮动--&gt;
+</code></pre>
+<h3 id="HTML文件的设计"><a href="#HTML文件的设计" class="headerlink" title="HTML文件的设计"></a>HTML文件的设计</h3><p>HTML文件只需要使用一些div,span,ul,li之类的标签，然后最好将不同类型的样式分别定义在独立的样式文件中，常见的一些文件命名规范有:全局样式global.css，框架布局layout.css，字体样式font.css，链接样式link.css，打印样式print.css</p>
+<h2 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h2><p>PHP是服务器端嵌入到HTML中的脚本语言，PHP脚本语言是一种弱类型检查的语言，变量或常量的数据类型由程序的上下文决定。</p>
+<h3 id="PHP的基本语法"><a href="#PHP的基本语法" class="headerlink" title="PHP的基本语法"></a>PHP的基本语法</h3><p>在变量的使用范围周期内，可以借助unset()函数释放指定的变量，使用isset()函数检测变量是否设置，使用empty()函数检查一个变量是否为空。<br>若使用isset()测试一个被设置成NULL的变量，将返回FLASE。推荐使用!empty($var)这种方法去判断一个变量存在且不能为空。</p>
+<p>变量名严格区分大小写，但内置结构和关键字以及自定义的类名和函数名都是不区分大小写的。</p>
+<p>PHP的引用并不是像c语言中的地址指针，不会导致在内存上同体，只是把各自的值相关联起来，使用unset()则不会导致所有引用变量消失。</p>
+<p>如果想查看某个表达式的值和类型，可以使用函数var_dump($var)</p>
+<p>PHP中的数组实际上是一个有序图，图是一种把values映射到keys的类型，它接受一定数量用逗号分隔的key=&gt;value参数对，如下所示:<br><code>$arr = array(&quot;foo&quot;=&gt;&quot;var&quot;,12=&gt;true);</code></p>
+<p>一个对象类型的变量，是由一组属性值和一组方法组成的，对象的声明和使用如下所示:</p>
+<pre><code class="PHP">class Person{
+    var $name;
+    function say()
+    {
+        echo &quot;Doing foo&quot;;
+    }
+}
+$p = new Person;
+$p-&gt;name = &quot;Tom&quot;;
+$p-&gt;say();
+</code></pre>
+<p>资源是一种特殊类型的变量，保存了到外部资源的一个引用。资源是通过专门的函数来建立和使用的。使用资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄。并由程序员创建、使用和释放</p>
+<pre><code class="PHP">$file_handler = fopen(&quot;info.txt&quot;,&quot;w&quot;);
+var_dump($file_handler);
+$dir_handler = opendir(&quot;C:\\Windows\\Fonts&quot;);
+$link_mysql = mysql_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;123456&quot;);
+$im_handler = imagecreate(100,50);
+$xml_parser = xml_parser_create();
+</code></pre>
+<p>常量的定义define(“PI”,3.14);</p>
+<p>执行命令运算符:反隐号(``)</p>
+<pre><code class="PHP">$output = `ls -al`
+echo &quot;&lt;pre&gt; $output &lt;/pre&gt;&quot;
+</code></pre>
+<p>错误控制运算符:@</p>
+<h3 id="PHP中的流程控制结构"><a href="#PHP中的流程控制结构" class="headerlink" title="PHP中的流程控制结构"></a>PHP中的流程控制结构</h3><p>PHP提供了两种类型的循环语句:一种是计数循环语句，通常用for完成，一种是条件循环语句，通常用while或do-while完成。</p>
+<h3 id="PHP的函数应用"><a href="#PHP的函数应用" class="headerlink" title="PHP的函数应用"></a>PHP的函数应用</h3><p>[continue,break]{num}，die()函数是exit()函数的别名</p>
+<pre><code class="PHP">function fun(arg1,arg2,...)
+{
+    return;
+}
+
+//在函数内部使用global关键字加载全局变量
+global $one,$two;
+
+// 使用变量函数声明和应用回调函数
+function filter($fun)
+{
+    for ($i=0; $i &lt; 100; $i++) { 
+        if ($fun($i)) {
+            echo $i.&quot;&amp;nbsp&amp;nbsp&quot;;
+        }
+    }
+}
+//借助call_user_func_array($fun_name,$para_arr)函数自定义回调函数
+call_user_func_array(&#39;fun&#39;,array($i));
+//类静态函数回调，将第一个参数&quot;函数名称字符串&quot;改为&quot;数组类型的参数&quot;
+//第一个元素为类名称字符串
+call_user_func_array(array(&#39;Demo&#39;,&#39;fun&#39;),array($para));
+//对象方法的回调，第一个元素值为对象的引用
+call_user_func_array(array(new Test(),&#39;fun&#39;),array($para));
+</code></pre>
+<p>将函数库文件载入到脚本中，include(),include_once(),require(),require_once()。<br>对include语句，在执行文件时，每次都要读取和评估;而对于require语句来说，文件只处理一次，实际上文件内容替换了require语句，这意味着执行多次的代码，require效率更高。但如果每次执行代码时是读取不同的文件，或者有通过一组文件迭代的循环，就是用include语句。<br>include语句放在流程控制的处理区段中使用，当PHP脚本文件读到它时，才将包含的文件读进来;require语句放在文件的开头和结尾处，在执行这个脚本前，就会先读入它所引入的文件，使它包含的文件成为PHP脚本的一部分。<br>require()和include()语句是语言结构，不是真正的函数，可以向PHP中其它的语言结构一样，例如echo可以使用echo(“abc”)的形式，也可以使用echo “abc”输出字符串，也可以使用include “config.php”的形式。</p>
+<h3 id="PHP中的数组与数据结构"><a href="#PHP中的数组与数据结构" class="headerlink" title="PHP中的数组与数据结构"></a>PHP中的数组与数据结构</h3><p>索引数组、关联数组。<br>直接为数组元素赋值即可声明数组;使用array函数声明数组。<br>array如果不使用=&gt;指定下标，默认为索引数组。</p>
+<p><code>mysql_fetch_row()</code></p>
+<p>数组遍历<br>1.使用foreach语句遍历数组时与数组下标无关，且foreach只能用于数组<br>第一种语法格式:<br><code>foreach($array_expr as $value){}</code><br>第二种语法格式:<br><code>foreach($array_expr as $key=&gt;$value){}</code></p>
+<p>2.each()函数需要传递一个数组作为参数，返回数组中当前元素的键/值对，并且向后移动数组指针到下一个元素的位置。键/值对被返回为带有4个元素的关联和索引混合的数组，键名分别为0、 1、key、value。其中键名0和key对应的值是一样的，是数组元素的键名，1和value则包含有数组元素的值。</p>
+<p>list()函数，这不是真正的函数，而是PHP的语言结构。list()仅能用于数字索引的数组并假定索引从0开始，用一步操作给一组变量赋值</p>
+<pre><code class="PHP">list($var1, ,$var3) = $array_expr;
+list($key,$value) = each($array_expr);
+//while循环遍历数组
+while(list($key,$value) = each($array_expr)){}
+reset()函数，而foreach语句会自动重置数组指针的位置
+</code></pre>
+<p>3.使用数组的内部指针控制函数遍历指针<br>current()、key()、next()、prev()、end()、reset()</p>
+<p>4.print_r()函数</p>
+<p>预定义数组(自动全局变量或超全局变量)<br>预定义数组           说明<br>$_SERVER        变量由web服务器设定或者直接与当前脚本的执行环境相关联<br>$_ENV           执行环境提交至脚本的变量<br>$_GET           经由URL请求提交给脚本的变量<br>$_POST          经由HTTP POST方法提交至脚本的变量<br>$_REQUEST       经由GET、POST、COOKIE机制提交至脚本的变量，因此该数组并不值得信任<br>$_FILES         经由HTTP POST文件上传而提交至脚本的变量<br>$_COOKIE        经由HTTP Cookies方法提交至脚本的变量<br>$_SESSION       当前注册给脚本会话的变量<br>$GLOBALS        包含一个引用指向每个当前脚本的全局范围内有效的变量，该数组的键名为全局变量的名称。</p>
+<p><code>register_globals off</code></p>
+<p>可以将url加到a链接标记的href属性中使用，也可以是在form表单的method属性中通过指定<br>GET方法传递到服务器的参数，还可以是直接在浏览器中输入的地址</p>
+<p>数组的相关处理函数<br>array_values() 将关联数组转化为索引数组<br>array_keys() 返回指定值的键名</p>
+<p>in_array() 检查数组中是否存在某个值 array_search()<br>此外还可以使用array_key_exits()函数检查特定的键名或索引是否存在于数组中。也可以使用isset()函数完成对于数组中键名或者索引的检查，isset()对于数组中的NULL值不会返回TRUE，而array_key_exits()会</p>
+<p>array_flip() 交换数组中的键和值，如果一个值出现了多次，则最后一个键名将作为它的值<br>array_reverse() 将原数组中的元素顺序翻转<br>count()、sizeof() 对数组元素个数进行统计<br>array_unique() 用于删除数组中重复的值</p>
+<p>使用回调函数处理数组的函数<br>array_filter() 过滤数组中的元素<br>array_walk() 对数组中每个元素应用回调函数处理<br>array_map() 可作用于多个数组</p>
+<p>数组的排序函数<br>sort() 元素由小到大升序进行排序 asort()保留键名和值的关系</p>
+<pre><code class="PHP">function sortByfun($one,$two)
+{
+    if(strlen($one) == strlen($two))
+        return 0;
+    else
+        return (strlen($one) &gt; strlen($two)) ? 1 : -1;
+}
+</code></pre>
+<p>拆分、合并、分解和接合数组<br>array_slice() 在数组中根据条件取出一段值并返回<br>array_combine() 通过合并两个数组来创建一个新数组<br>array_merge() 把一个或多个数组合并为一个数组</p>
+<p>数组与数据结构<br>堆栈相关:array_push、array_pop<br>用array_push来给数组增加一个单元还不如用$array[] = $value来的快</p>
+<p>队列相关:如果使用array_push在数组的最后添加数据，而将数组中第一个元素删除就可以实现一个队列。函数array_shift(array &amp;array)可以删除数组中的第一个元素</p>
+<p>数组运算符号<br>$a + $b 合并两个数组</p>
+<p>可以使用unset()删除数组中任意位置的一个元素，但要注意数组将不会重建索引</p>
+<p>PHP数组中的类型只有包含整型和字符串型的下标。应该始终在字符串表示的数组索引上加上引号，例如使用$foo[‘bar’]而不是$foo[bar]，裸字符串效率会低8倍以上，而键名为常量或变量则不用加引号</p>
+<h3 id="PHP面向对象的程序设计"><a href="#PHP面向对象的程序设计" class="headerlink" title="PHP面向对象的程序设计"></a>PHP面向对象的程序设计</h3><p>构造方法:function <strong>construct(){}<br>析构方法:function </strong>destruct(){}</p>
+<p>PHP系统中给我们提供了很多预定义的方法，它们的作用、方法名称、使用的参数列表和返回值都是在PHP中规定好的并且都是以两个下划线开始的方法名称。<br><strong>set()、</strong>get()、<strong>isset()、</strong>unset()以及前面的<strong>construct()、</strong>destruct()通常也称为魔术方法，还有<strong>call()、</strong>toString()、<strong>autoload()<br>private function </strong>set($propertyName,$propertyValue)直接为私有属性赋值时自动调用</p>
+<p>PHP中只有单继承calss Teacher extends Student{}</p>
+<p>在PHP中不能定义重名的函数</p>
+<p>final，使用final标识的类不能被继承，在类中使用final标识的成员方法，在子类中不能被继承<br>static，static标识的成员是属于类的，类中的静态成员使用类名直接访问;在类中声明的成员方法中可以使用关键字self来访问静态成员self::$final_var，不能用$this来引用它，要区别于对象的引用。</p>
+<p>单态涉及模式，一个类只能有一个实例对象存在</p>
+<p>在PHP中定义常量是通过define()函数来完成的，但要将类中的成员属性定义为常量，则只能使用const关键字，其访问方式和静态成员一样，标识为常量的属性是只读的，不能重新赋值。使用const声明的常量名称前不要使用$，而且常量名通常都是大写的 const VAR_CONST = “const value”;</p>
+<p>instanceof，使用这个关键字可以确定一个对象是类的实例、类的子类还是实现了某个特定接口</p>
+<p>克隆对象$p1 = clone $p2;会自动调用魔术方法__clone()</p>
+<p>toString()获取对象字符串，直接输出对象引用时自动调用的方法</p>
+<p><strong>call()若调用对象中不存在的方法就会自动调用该方法function </strong>call($funName,$args){}</p>
+<p>__autoload()自动加载类，文件的命名使用classname.class.php</p>
+<pre><code class="PHP">function __autoload($classname)
+{
+    // 使用include包含类所在文件
+    include(strtolower($classname).&quot;.class.php&quot;);
+}
+</code></pre>
+<p>对象串行化：对象需要在网络中传输时，将对象串行化成二进制串后在网络中传输；对象需要持久保存时，将对象串行化后写入文件或是数据库中<br>使用serialize()函数来串行化一个对象，把对象转化成二进制的字符串，unserialize()反串行化</p>
+<p>抽象类和抽象方法abstract<br>接口interface，接口是一种特殊的抽象类，而抽象类又是一种特殊的类，所以接口也是一种特殊的类。接口中声明的方法必须都是抽象方法，另外不能在接口中声明变量，只能使用const关键字声明为常量的成员属性，而且接口中的所有成员都必须有public的访问权限，通过类去继承接口要使用implements关键字来实现，但要想实例化对象，要把所有的抽象方法都实现才行</p>
+<p>设置错误报告的级别，除了无关紧要的注意，其他所有报告都输出<br><code>error_reporting(E_ALL &amp; ~E_NOTICE);</code></p>
+<h3 id="字符串处理"><a href="#字符串处理" class="headerlink" title="字符串处理"></a>字符串处理</h3><p>双引号中变量的解析</p>
+<p>常用的字符串输出函数:echo()、print()、die()、printf()、sprintf()把格式化的字符串以返回值的形式写入到一个变量中</p>
+<p>常用的字符串格式化函数:trim()、str_pad()、strtolower()、strtoupper()、str_replace()、explode()</p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>使用preg_为前缀命名的正则表达式函数:/ /<br>preg_match()                进行正则表达式匹配<br>preg_match_all()            进行全局正则表达式匹配<br>preg_replace()              执行搜索和替换<br>preg_split()                分割字符串<br>preg_grep()                 返回与模式匹配的数组单元<br>preg_replace_callback()     用回调函数执行搜索和替换</p>
+<h3 id="会话控制"><a href="#会话控制" class="headerlink" title="会话控制"></a>会话控制</h3><p>Cookie是一种由服务器发送给客户端的片段信息，存储在客户端浏览器的内存或者硬盘上，在客户端对服务器的请求中发回它<br>Cookie是HTTP标头的一部分，因此setCookie()函数必须在其它信息被输出到浏览器前调用，即使是空格或空行也都不要在setCookie()函数之前输出，这和调用header()函数的限制类似</p>
+<p>只指定cookie识别 名称第一个参数<br><code>setcookie(&quot;username&quot;);</code><br>设置cookie在当前时间之前已经过期<br><code>setcookie(&quot;username&quot;,&quot;&quot;,time()-1);</code><br>第一种方法将cookie的生存时间默认设置为空，则生存期限与浏览器一样，浏览器关闭时cookie就会被删除。而对于第二种删除cookie的方法，系统会自动删除客户端的cookie程序</p>
+<p>Session则是将数据存放于服务器系统之下</p>
+<p>转向网站首页<br><code>header(&quot;Location:index.php&quot;);</code></p>
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>界面模板+业务逻辑   =&gt;   组合脚本</p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/细说PHP笔记" data-title="细说PHP笔记" data-url="https://v4if.github.io/2016/细说PHP笔记/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

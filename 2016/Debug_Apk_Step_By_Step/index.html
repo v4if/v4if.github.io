@@ -1,0 +1,297 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">Android Studio + ideasmali动态调试smali</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-09-21
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>我更喜欢把题目取做另外一个名字：Debug apk step by step，这个是阿里聚安全一篇文章前言里写到的。</p>
+<blockquote>
+<p>这年头，apk全都是加密啊，加壳啊，反调试啊，小伙伴们表示已经不能愉快的玩耍了。静态分析越来越不靠谱了，apktool、ApkIDE、jd-GUI、dex2jar等等等等已经无法满足大家的需求了。那么问题就来了，小伙伴们真正需要的是什么？好的，大家一起呐喊出你内心的欲望吧，我们的目标是 —— “debug apk step by step”<br>来自阿里聚安全《解密所有APP运行过程中的内部逻辑》</p>
+</blockquote>
+<p>原文地址：<a href="https://jaq.alibaba.com/blog.htm?id=52" target="_blank" rel="external">解密所有APP运行过程中的内部逻辑</a></p>
+<p>把文中的流程认认真真走下来之后，会发现整个环境的构建对于app的逆向来说简直强大的不要不要的，就像从手工时代的ida动态调试.dex，.so文件一下过渡到了新石器时代，我们可以把逆向出来的smali文件，即Dalvik虚拟机指令直接扔到编译器里面去一步一步Debug，下断点查看变量的值，得到动态执行的结果，只能说太强大！！！</p>
+<p>我的理解smali就相当于win下的汇编，dex相当于win下的PE文件，也就是说dex是放在Dalvik上执行的文件格式，smali是为了方便程序员阅读而存在的语法格式。</p>
+<h3 id="绪"><a href="#绪" class="headerlink" title="绪"></a>绪</h3><p>最近在做关于app漏洞挖掘的工作，所以肯定绕不过逆向这个坎，拿到app第一件事就是逆向，得到smali代码或者java代码，然后放到sublime等等编辑器下面review。<br>先明确一下安卓应用src的逆向和res的反编译并不是在一起进行的，需要用到不同的工具，先来看一下在这之前的通常做法。。。</p>
+<p>我准备了安卓逆向这本书里的一个crackme02.apk用于逆向</p>
+<p>套路一：apktool、dex2jar + jd-jui<br>apktool用于反编译资源文件，可以看到代码也被以smali文件的格式被逆向出来，后面我们会用dex2jar结合jd-jui逆向出来java源码类似的结构</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-091647.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>逆向java源码需要先将apk解压，linux用户解压命令推荐unar，支持各种格式的压缩，并且win上的zip格式解压没有乱码，其他解压缩命令经常会出现乱码，然后通过dex2jar将解压得到的classes.dex转换为.jar格式，最后从jd-jui里面打开我们刚才转换的classes_dex2jar.jar文件就可以看到被逆向出来的java源码了<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-092716.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"><br>套路二：jadx + Sublime Text<br>这也是我比较喜欢的一个方式，简单省事，一键解压，可以一步直接得到crackme02.apk的res资源文件和java源码文件，并且AndroidManifest.xml文件是可读的状态</p>
+<blockquote>
+<p>jadx -d out crackme02.apk</p>
+</blockquote>
+<p>将输出的out文件拖动到Sublime Text里面，整个结构一目了然</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-093553.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"><br>套路三: jeb<br>这个软件简直太强大，无奈它是收费的，我这里用的是一个破解版的，原版据说可以动态调试smali，支持smali转java，java转smali，还可以对我们分析的源码进行标注，方便查找</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-094311.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"><br>以上就是手工时代的review代码，然后就想怎么才能像程序开发人员一样去逆向调试没有源码，只有打包好的apk程序呢，接下来我们转向动态调试逆向的app。。。</p>
+<h3 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h3><p>1、Android Studio<br>2、smalidea-0.03.zip<br>3、baksmali-2.1.3.jar</p>
+<p>阿里聚安全《解密所有APP运行过程中的内部逻辑》这篇文章给出的方案是<br>apktool+eclipse<br>apktool+android studio<br>apktool+idea<br>但是这三种方案都没有走通，原因如下：</p>
+<blockquote>
+<p>使用apktool反编译apk：<br>java ­jar apktool_2.0.0b9.jar d ­-d xxx.apk ­o out<br>加上­-d选项之后反编译出的文件后缀为.java，而不是.smali，每个.java文件立马都伪造成了一个类，语句全都是“a=0;”这一句，smali语句成为注释，小伙伴们自己看看打开就知道了，做这些都是为了后面欺骗idea、eclipse、android studio这些ide的</p>
+</blockquote>
+<p>这就是软件的发展导致的。<br>这三种方案的基础都是先把通过apktool反编译apk将得到的smali源码文件伪装成java文件去欺骗编译器，然后在IDE里面remote连接模拟器进行动态调试。<br>本文测试的时候apktool的版本是2.2.0-dirty，但是这个版本已经不支持-d选项了，具体原因我们一会再说</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-100610.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>文章中测试的版本是apktool_2.0.0b9.jar，所以我们也下下来测试一下<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-100931.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-101202.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>上面两张图中是分别测试的两个apk文件，第一张是crackme02.apk，这个是安卓逆向那本书里面提供的apk，即开发年代比较久，版本比较低，第二张是testSmali.apk，这个是我用Android Studio 2.1.3写的一个小的测试apk，可以看到报了一个Could not decode arsc file错误，这是由于编译与反编译总是在不停的对抗中升级，apktool的源码是公开的，所以说编译器就找apktool的漏洞，怎么样绕过反编译，apktool就不停的升级，所以解决办法就是update。。。update。。。update。。。<br>但是我们前面也说了当apktool升级到2.2.0-dirty版本之后，是不支持-d选项的，这个怎么办，要陷入死循环吗？<br>前面说具体原因我们一会再说，这里我们解释一下，只需要点开2.2.0-dirty下面给的那个网址，就可以得到详细的答案了 <a href="https://github.com/iBotPeaches/Apktool/issues/1061" target="_blank" rel="external">Remove SmaliDebugging #1061</a></p>
+<blockquote>
+<p>1、We lose SmaliDebugging (our version), which is hit/miss in terms of IDE and support these days.<br>2、Those who still depend on this feature will have to transition to smali idea plugin.<br>3、smali-idea is in Alpha still</p>
+</blockquote>
+<p>具体原因就是这个工作像idea这样的编译器已经做了，就是我们前面说的 baksmali-2.1.3.jar 这个插件，意思是idea &amp; Android Studio有了这个插件之后已经支持调试Smali文件了，所以就没有必要去把Smali文件伪装成java文件去欺骗IDE进行远程动态调试了。<br>下面我们贴一下刚才testSmali.apk的源码，然后进入具体步骤，后面我们的测试也是基于这个apk的，在activity_main.xml文件里定义了一个@+id/button的按钮，然后MainActivity里面有一个source()和sink()函数用于测试，我们利用Android Studio的Build-&gt;Generate Signed Apk生成一个带有签名的Apk文件，最后生成的文件是{Workspace}/app/app-release.apk，我们重命名为testSmali.apk，然后移动到自己的测试目录下进行测试<br>源码如下:</p>
+<pre><code class="java">package me.v4if.sourcedecode;
+
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    String Tag = &quot;ForDebug&quot;;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(&quot;Smali Test&quot;);
+                int y = 0;
+                y = 5;
+                y = source();
+                sink(y);
+            }
+        });
+    }
+
+    private int source() {
+        int x = 3;
+        return x;
+    }
+
+    private void sink(int x) {
+        Log.i(Tag, String.format(&quot;%d&quot;, x));
+    }
+}
+</code></pre>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><p>终于等到了这一步。。。</p>
+<h5 id="启动模拟器，安装生成的apk"><a href="#启动模拟器，安装生成的apk" class="headerlink" title="启动模拟器，安装生成的apk"></a>启动模拟器，安装生成的apk</h5><p>emulator -avd AVD_24<br>等模拟器起来之后将我们签名之后的apk拖动到模拟器上进行安装，也可以使用adb install命令</p>
+<h5 id="以调试状态启动app"><a href="#以调试状态启动app" class="headerlink" title="以调试状态启动app"></a>以调试状态启动app</h5><p>adb shell am start -D -n me.v4if.sourcedecode/.MainActivity<br>-n后面参数的形式是app包名/app入口，然后现在模拟器是等待调试的一个状态：</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-105051.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>然后打开ddms查看一下等待调试的端口：<br>cd Software/Android_Sdk/tools<br>./ddms<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-110542.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>上面有个小虫子的那一行，一般都是8700，后面要用到这个端口号</p>
+<h5 id="Android-Studio安装ideasmali插件"><a href="#Android-Studio安装ideasmali插件" class="headerlink" title="Android Studio安装ideasmali插件"></a>Android Studio安装ideasmali插件</h5><p>将我们前面下载的 smalidea-0.03.zip 插件进行本地安装<br>File -&gt; Settings -&gt; Plugins -&gt; Install plugin from disk 然后选择我们刚刚下载的插件，安装完成之后需要重启Android Studio</p>
+<h5 id="反编译app，得到smali文件"><a href="#反编译app，得到smali文件" class="headerlink" title="反编译app，得到smali文件"></a>反编译app，得到smali文件</h5><p>这里需要用到的是我们前面下载的 baksmali-2.1.3.jar 工具</p>
+<p>java -jar baksmali-2.1.3.jar testSmali.apk -o myapp/src<br>在当前文件夹下的myapp/src目录下会得到逆向出来的smali文件源码，用于我们后面构建Android Studio工程</p>
+<h5 id="从smali文件构建Android-Studio工程"><a href="#从smali文件构建Android-Studio工程" class="headerlink" title="从smali文件构建Android Studio工程"></a>从smali文件构建Android Studio工程</h5><p>File -&gt; New -&gt; Import Project -&gt; 选择刚才myapp目录的位置 -&gt; Create project from existing sources -&gt; 然后一路next<br>对之前反编译的myapp/src文件夹右键–&gt;Make Directory As —&gt;Source Root</p>
+<h5 id="配置远程调试的选项"><a href="#配置远程调试的选项" class="headerlink" title="配置远程调试的选项"></a>配置远程调试的选项</h5><p>Run–&gt;Edit Configurations<br>添加一个remote的调试选项，端口写成8700</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-112531.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<h5 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h5><p>File–&gt;Project Structure 我jdk的版本是1.8.0_102</p>
+<h5 id="Debug调试"><a href="#Debug调试" class="headerlink" title="Debug调试"></a>Debug调试</h5><p>下好断点之后Run–&gt;Debug ‘smali’，这里的Smali是我们之前配置好的remote调试选项，也可以点那个蓝色的小虫子。</p>
+<p><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-113008.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>可以看到我们逆向出来的smali文件已经停在了MainActivity的Oncreate()函数入口处<br>这里简单设置了三个断点，一个是上面的Oncreate()函数入口处，一个是按钮点击事件onClick()函数的入口处，还有一个是sink()函数的入口处，根据我们上面贴的代码的逻辑是点击button后是将调用source()之后返回的值传递给sink()函数，我们进去sink()函数debug看一下动态调试的魅力！！！<br>现在程序是处于等待执行的状态，我们点击Debug窗口下面那个绿色的小箭头Resume Programe (F9)，然后没有什么反应，接下来点击模拟器上的click按钮<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-114130.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>发现程序停在了我们之前在onClick()函数下断点的位置上，和之前预想一致<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-114255.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>继续执行，Resume Programe，然后程序停在了sink()函数里面，这时候我们可以单步step by step去看<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-09-22-114740.png-rb" alt="debug_apk_step_by_step" class="pui-img-article"></p>
+<p>可以看到上图中v1寄存器的值为3，正好是我们从source()得到的返回值<br>整个逆向动态调试Smali的环境就搭建好了，真正考验能力的就是阅读Smali文件和调试程序的功底了。。。</p>
+<h3 id="附：吾爱破解Smali基础知识"><a href="#附：吾爱破解Smali基础知识" class="headerlink" title="附：吾爱破解Smali基础知识"></a>附：吾爱破解Smali基础知识</h3><p>吾爱破解安卓逆向入门教程–导航帖【持续更新】</p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/Debug_Apk_Step_By_Step" data-title="Android Studio + ideasmali动态调试smali" data-url="https://v4if.github.io/2016/Debug_Apk_Step_By_Step/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>

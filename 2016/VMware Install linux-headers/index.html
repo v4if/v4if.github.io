@@ -1,0 +1,243 @@
+<!-- 模板入口文件 -->
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Plane UI" />
+<meta name="keywords" content="Plane UI" />
+<title>v4if-归心</title>
+
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="stylesheet" type="text/css" href="/dist/plane/css/planeui.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+</head>
+<html>
+        <!--[if lte IE 9]>
+        <div class="pui-layout pui-browsehappy">
+            <a href="javascript:;" class="pui-close" onclick="document.stybody.removeChild(this.parentNode);"></a>
+            <p>您正在使用 <strong class="pui-text-yellow pui-text-xl">过时</strong> 的非现代浏览器，<strong class="pui-text-success pui-text-xl">91.23%</strong> 的人选择 <a href="http://browsehappy.com/" target="_blank" class="pui-text-green-400 pui-text-xl"><strong>升级浏览器</strong></a>，获得了更好、更安全的浏览体验！</p>
+        </div>
+        <![endif]-->
+        <a name="top"></a>
+        <a href="#top" class="fa fa-arrow-circle-up fa-3x pui-text-blue-400" id="go-to-top"></a>
+		<div class="pui-layout">
+			<div class="pui-layout pui-bg-blue-500 blog-header-con">
+    <header class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-header">
+        <h2>V4if 's Blog<small class="pui-text-white">website</small></h2>
+        <menu class="pui-grid pui-row blog-menu">
+            <ul class="pui-menu pui-menu-inline pui-menu-radius pui-grid-xs-12 pui-grid-sm-8 pui-grid-md-8 pui-grid-lg-9 pui-xs-hide">
+                <li>
+                    <a href="/">首页|Home</a>
+                </li>
+                <li>
+                    <a href="/archives">文章|Archives</a>
+                </li>
+                <li>
+                    <a href="/about">留言板|Messages</a>
+                </li>
+                <li>
+                    <a href="/log">日志|Logs</a>
+                </li>
+            </ul>
+            <div class="pui-menubar-offside pui-menu pui-menu-inline pui-menu-radius pui-right"> 
+                <a href="https://www.zhihu.com/people/jichao-wu/" title="知乎" target="_blank" class="fa fa-times-circle fa-2x"><small class="pui-text-white">知乎</small></a>  
+                <a href="https://github.com/v4if" title="Github" target="_blank" class="fa fa-github fa-2x"><small class="pui-text-white">GitHub</small></a>        
+            </div>
+        </menu>
+        
+        <i class="fa fa-list fa-2x pui-xs-show" id="open-menu"></i>
+    </header>
+</div> 
+
+			<div class="pui-container pui-layout-fixed pui-layout-fixed-1200 pui-grid blog-main">
+				
+				<div class="pui-center pui-layout-fixed pui-layout-fixed-1200 pui-top-container">
+    
+        <article>
+            <header>
+                <h1 class="pui-article-title">VMware Install linux-headers</h1>
+                <div class="pui-article-subtitle">
+                    发表于2016-03-26
+                    <div class="pui-font-sizer" target=".pui-article-content > *, section > *">
+                        <span class="pui-text-xs" size="default">默认</span>
+                        <span class="pui-text-sm" size="14px">小</span>
+                        <span class="pui-text-md" size="18px">中</span>
+                        <span class="pui-text-lg" size="24px">大</span>
+                    </div>
+                </div>
+            </header>
+            <hr class="pui-hr-dashed">
+            <div class="pui-article-content">
+                <p>kali 2016.1 安装 VMware Workstation Pro 12 遇到的一些坑特此记录一下。<br>主机环境：<br><code>4.3.0-kali1-amd64</code></p>
+<a id="more"></a>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>官网地址『 <a href="https://my.vmware.com/web/vmware/info?slug=desktop_end_user_computing/vmware_workstation_pro/12_0" target="_blank" rel="external">vmware_workstation_pro</a> 』</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><pre><code class="bash">cd ~/Download
+chmod +x VMware-Workstation-Full-12.1.0-3272444.x86_64.bundle
+./VMware-Workstation-Full-12.1.0-3272444.x86_64.bundle
+</code></pre>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>打开终端输入<code>vmware</code>即可，运行的时候提示<code>Install linux-headers</code>，二话不说安装就是了。</p>
+<pre><code class="bash">apt-get install linux-headers-$(uname -r)
+</code></pre>
+<p>结果就悲剧了，无法定位软件包<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-25-150236_1366x768_scrot.png-rb" alt="unable to locate" class="pui-img-article"></p>
+<p>官方给出的方案是</p>
+<pre><code class="bash">apt-get install open-vm-tools-desktop fuse
+</code></pre>
+<p>执行如下：<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-25-150049_1366x768_scrot.png-rb" alt="linux-headers-4.4.0-kali1-amd64" class="pui-img-article"><br>安装版本为<code>linux-headers-4.4.0-kali1-amd64</code>，而主机环境为<code>4.3.0-kali1-amd64</code>，分析了一下原因可能是因为软件更新的时候<code>apt-get update</code>进行了软件列表更新，但是没有进行<code>apt-get dist-upgrade</code>进行版本更新，才出现了<code>4.3.0-kali1-amd64</code>版本主机环境，<code>install</code>的时候读取的是更新之后的软件列表。<br>然后手动删除软件更新列表，重新更新</p>
+<pre><code class="bash">rm -rf /var/lib/apt/lists
+apt-get update
+</code></pre>
+<p>再次执行<code>apt-get install open-vm-tools-desktop fuse</code>的时候发现<code>unable to locate</code>无法定位软件包<br>在<code>update</code>的过程中出现了一些<code>404</code>，<code>Hash Sum mismatch</code>，原因如下</p>
+<blockquote>
+<p>你所使用的网络供应商，有些会设置一些透明缓存，以增加网络内部速度，减少出口的流量，你获取的某些文件不是源服务器上的真正文件，是从缓存中获取的，当缓存中获取的一些校验信息跟源中不一致的时候，自然提示校验失败，无法继续更新。此问题实际上跟apt软件仓库的格式设计有关。新发布的版本的软件仓库更新比较频繁，按道理缓存中的文件应该同步更新，可惜因为多个镜像站点的有快慢，因此造成了缓存无法保证一致性。当网络提供商足够有实力，不设至透明缓存时，这个问题是不存在的。这就是为什么有些人反馈使用无线上网卡（移动、联通的3g网络）就一切OK，一单换回长城宽带、或者宽带通就不行了。</p>
+</blockquote>
+<p>好多网站都访问不到，都被转到了这里『<a href="http://mirrors.neusoft.edu.cn/" target="_blank" rel="external">We - 开源镜像站</a>』</p>
+<blockquote>
+<p>解决方案很简单，绕过缓存直接访问站点即可。如何绕过ISP设置的这种缓存，方法跟绕过长城防火墙一样。我找了格免费的ssh服务代理，再安装一个proxychains，在/etc/proxychians.conf 中设置好你的代理使用proxychains sudo apt-get update</p>
+</blockquote>
+<p>这里没有绕过，采用的方法是下载linux-headers本地安装。</p>
+<h4 id="下载linux-headers"><a href="#下载linux-headers" class="headerlink" title="下载linux-headers"></a>下载<code>linux-headers</code></h4><p>查看主机环境</p>
+<pre><code class="bash">uname -r
+</code></pre>
+<p>输出为<code>4.3.0-kali1-amd64</code>，Google<code>linux-headers-4.3.0-kali1-amd64</code><br>『<a href="http://http.kali.org/kali/pool/main/l/linux/" target="_blank" rel="external">linux-headers</a>』找到自己主机环境的安装包下载，我这里下载的是<code>linux-headers-4.3.0-kali1-amd64_4.3.3-5kali4_amd64.deb</code></p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><pre><code class="bash">cd ~/Download
+dpkg -i linux-headers-4.3.0-kali1-amd64_4.3.3-5kali4_amd64.deb
+</code></pre>
+<p>出现依赖包问题<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-25-175003_1365x377_scrot.png-rb" alt="dependency problems" class="pui-img-article"><br>下载<code>linux-headers-4.3.0-kali1-common_4.3.3-5kali4_amd64.deb</code>，<code>linux-kbuild-4.3_4.3.1-2_amd64.deb</code>依次安装</p>
+<p>再次运行<code>vmware</code>，会自动搜索<code>linux-headers</code>，最后成功解决，vmware运行截图<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/2016-03-26-110757_1366x768_scrot.png-rb" alt="vmware" class="pui-img-article"></p>
+<h3 id="安装linux-headers的思考"><a href="#安装linux-headers的思考" class="headerlink" title="安装linux-headers的思考"></a>安装<code>linux-headers</code>的思考</h3><p>当无法定位软件包的时候，去各大论坛网站搜索怎么安装还不如直接下载所需的安装包，本地安装来的快。<br>不懂的问题Google之，引擎在手，天下我有。<br>『<a href="https://www.google.com.hk/webhp?hl=zh-CN" target="_blank" rel="external">google search</a>』<br><img src="http://7xot8c.com1.z0.glb.clouddn.com/google-doodle-600.jpg-rb" alt="google search" class="pui-img-article"></p>
+
+            </div>
+        </article>
+    
+
+    <link rel="stylesheet" href="/dist/highlight/tomorrow.css">
+    <script src="/dist/highlight/highlight.pack.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+	
+		<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="post-2016/VMware Install linux-headers" data-title="VMware Install linux-headers" data-url="https://v4if.github.io/2016/VMware Install linux-headers/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zone-atkjest"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+	
+</div>
+
+
+			</div>
+			<footer class="pui-center pui-layout-fixed pui-layout-fixed-1200 blog-footer">
+    <hr class="pui-xs-hide" />
+    <ul class="pui-breadcrumb pui-margin-none">
+        <li>
+            <a href="/"><i class="fa fa-home"></i> 首页</a>
+        </li>
+        <li>
+            <a href="/archives">文章|Archives</a>
+        </li>
+        <li>
+            <a href="/about">留言板|Messages</a>
+        </li>
+        <li>
+            <a href="/log">日志|Logs</a>
+        </li>
+    </ul>
+    <div class="copyright">
+        <span class="pui-right"><a href="#top" class="pui-link">TOP</a></span>
+        <p>Copyright &copy; <a href="https://v4if.github.io" class="pui-link" title="v4if-归心" target="_blank">v4if</a> All Rights Reserved.</p>
+        <p>Powered by <a href="https://github.com/pandao/planeui" class="pui-link" target="_blank">Plane UI</a>, <a href="https:https://hexo.io/zh-cn/" target="_blank" class="pui-link">Hexo</a> .<small class="pui-right">化繁为简。</small></p>
+    </div>
+</footer>
+
+
+<!--[if (gte IE 9) | !(IE)]><!-->
+<script type="text/javascript" src="/dist/jquery/jquery-2.1.1.min.js"></script>
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/dist/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie8.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="/dist/plane/js/planeui.patch.ie9.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="/dist/plane/js/planeui.min.js"></script>
+
+<script>
+$(function (){
+    
+    $("#open-menu").bind($.clickOrTouch(), function() {
+        $(".blog-menu > .pui-menu, .blog-search").toggleClass("pui-xs-hide");
+    });
+    
+    $(".pui-search-keywords").bind("click touchend keyup", function(){
+        $(".pui-search-auto-complete").removeClass("pui-hide");
+    });
+    
+    $(".pui-search-auto-complete").mouseleave(function(){
+        $(this).addClass("pui-hide");
+    });
+    
+    var goToTop = $("#go-to-top");
+
+    goToTop.scrollTo(function(target) {
+        console.log(this, target);
+    });
+    
+    $("a[href*=\"#\"]").scrollTo();
+    
+    var headerCon = $('.blog-header-con');
+    var blogMain  = $(".blog-main").children(".pui-row").eq(0);
+    var blogSide  = $(".blog-side");
+    
+    $(window).scroll(function(){
+        var top = $(window).scrollTop();
+        
+        if ($(window).height() <= 360) {
+            return ;
+        }
+        
+        if(top > 160) {
+            headerCon.css({
+                position: "fixed",
+                top: 0,
+                left: 0,
+                zIndex: 1000,
+                boxShadow : "0 1px 3px rgba(0,0,0,0.3)"
+            });
+        } else {
+            headerCon.css({
+                position  : "static",
+                boxShadow : "none"
+            });            
+        }
+        
+        if (top > 180) {
+            goToTop.fadeIn();
+        } else {
+            goToTop.fadeOut();
+        }
+    });
+    
+});
+</script>
+
+		</div>
+</html>
